@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="escolaridade">
+        <item>"Selecione ..."</item>
+        <item>"Fundamental"</item>
+        <item>"Médio"</item>
+        <item>"Técnico"</item>
+        <item>"Superior completo"</item>
+        <item>"Superior em curso"</item>
+        <item>"Superior incompleto"</item>
+        <item>"Funcionário público"</item>
+        <item>"Não respondeu"</item>
+    </string-array>
+</resources>

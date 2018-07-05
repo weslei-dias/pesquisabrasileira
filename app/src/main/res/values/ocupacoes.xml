@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="ocupacoes">
+        <item>"Selecione ..."</item>
+        <item>"Assalariado"</item>
+        <item>"Autônomo/P.Liberal"</item>
+        <item>"Empresário"</item>
+        <item>"Estudante"</item>
+        <item>"Desempregado"</item>
+        <item>"Dona de casa"</item>
+        <item>"Funcionário público"</item>
+        <item>"Não respondeu"</item>
+    </string-array>
+</resources>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="escolhasPos">
+        <item>"Selecione ..."</item>
+        <item>"Não gostaria"</item>
+        <item>"Não sou Graduado"</item>
+        <item>"Sim gostaria"</item>
+        <item>"Já fiz"</item>
+        <item>"Não sabe"</item>
+        <item>"Não respondeu"</item>
+    </string-array>
+</resources>

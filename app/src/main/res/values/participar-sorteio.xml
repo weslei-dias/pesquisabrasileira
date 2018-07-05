@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="participarSorteio">
+        <item>"Selecione ..."</item>
+        <item>"Sim"</item>
+        <item>"Não"</item>
+        <item>"Não sabe"</item>
+        <item>"Não respondeu"</item>
+    </string-array>
+</resources>

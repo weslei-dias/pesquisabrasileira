@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="areas">
+        <item>"Selecione ..."</item>
+        <item>"Educação"</item>
+        <item>"Saúde"</item>
+        <item>"Gestão"</item>
+        <item>"Direito"</item>
+        <item>"Técnologia da informação"</item>
+        <item>"Não graduado"</item>
+        <item>"Graduação em curso"</item>
+        <item>"Quero fazer graduação"</item>
+        <item>"Não respondeu"</item>
+        <item>"Outra"</item>
+    </string-array>
+</resources>

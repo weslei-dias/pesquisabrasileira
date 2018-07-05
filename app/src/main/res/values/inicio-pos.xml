@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="inicioPos">
+        <item>"Selecione ..."</item>
+        <item>"Este mês"</item>
+        <item>"Em até 6 meses"</item>
+        <item>"Em x meses"</item>
+        <item>"Não sabe"</item>
+        <item>"Não respondeu"</item>
+    </string-array>
+</resources>

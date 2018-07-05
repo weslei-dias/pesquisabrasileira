@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="locais">
+        <item>"Selecione ..."</item>
+        <item>"Trabalho"</item>
+        <item>"Escola"</item>
+        <item>"Rua"</item>
+        <item>"Não sabe"</item>
+        <item>"Não respondeu"</item>
+        <item>"Outro"</item>
+    </string-array>
+</resources>
