@@ -5,8 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.domain.androidcrud.MainActivity"
-    tools:showIn="@layout/activity_main">
+    tools:context="com.domain.androidcrud.MainActivity">
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
@@ -50,7 +49,7 @@
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/layout_dados_user"
                 android:layout_width="match_parent"
-                android:layout_height="757dp"
+                android:layout_height="944dp"
                 android:layout_marginBottom="28dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginLeft="16dp"
@@ -340,254 +339,183 @@
 
                 </android.support.constraint.ConstraintLayout>
 
-                <android.support.constraint.ConstraintLayout
+                <LinearLayout
                     android:id="@+id/ll_fieldset_6"
                     android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:orientation="horizontal">
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
 
                     <TextView
                         android:id="@+id/txtIdade"
-                        android:layout_width="wrap_content"
+                        android:layout_width="120dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="8dp"
                         android:text="Idade:"
-                        android:textSize="14sp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:textSize="14sp" />
 
                     <Spinner
                         android:id="@+id/spnIdade"
-                        android:layout_width="wrap_content"
-                        android:layout_height="27dp"
-                        android:layout_marginLeft="85dp"
-                        android:layout_marginStart="85dp"
-                        android:layout_marginTop="4dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:entries="@array/idades"
-                        android:spinnerMode="dialog"
-                        app:layout_constraintStart_toEndOf="@+id/txtIdade"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </android.support.constraint.ConstraintLayout>
+                        android:spinnerMode="dialog" />
+                </LinearLayout>
 
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/linearLayout2"
+                <LinearLayout
+                    android:id="@+id/ll_fieldset_7"
                     android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:orientation="horizontal">
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
 
                     <TextView
                         android:id="@+id/txtLocalPesquisa"
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/width_label"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="8dp"
                         android:text="Local da pesquisa:"
-                        android:textSize="14sp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:textSize="14sp" />
 
                     <Spinner
                         android:id="@+id/spnLocalPesquisa"
-                        android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginStart="8dp"
-                        android:layout_marginTop="4dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:entries="@array/locais"
-                        android:spinnerMode="dialog"
-                        app:layout_constraintStart_toEndOf="@+id/txtLocalPesquisa"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </android.support.constraint.ConstraintLayout>
+                        android:spinnerMode="dialog" />
+                </LinearLayout>
 
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/linearLayout3"
+                <LinearLayout
+                    android:id="@+id/ll_fieldset_8"
                     android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:orientation="horizontal">
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
 
                     <TextView
                         android:id="@+id/txtLocalOcupacao"
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/width_label"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="8dp"
                         android:text="Ocupação:"
-                        android:textSize="14sp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:textSize="14sp" />
 
                     <Spinner
                         android:id="@+id/spnOcupacao"
-                        android:layout_width="wrap_content"
-                        android:layout_height="27dp"
-                        android:layout_marginLeft="44dp"
-                        android:layout_marginStart="44dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_marginTop="4dp"
                         android:entries="@array/ocupacoes"
-                        android:spinnerMode="dialog"
-                        app:layout_constraintStart_toEndOf="@+id/txtLocalOcupacao"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </android.support.constraint.ConstraintLayout>
+                        android:spinnerMode="dialog" />
+                </LinearLayout>
 
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/linearLayout4"
+                <LinearLayout
+                    android:id="@+id/ll_fieldset_9"
                     android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:orientation="horizontal">
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
 
                     <TextView
                         android:id="@+id/txtEscolaridade"
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/width_label"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="8dp"
                         android:text="Escolaridade:"
-                        android:textSize="14sp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:textSize="14sp" />
 
                     <Spinner
                         android:id="@+id/spnEscolaridade"
-                        android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginStart="16dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:layout_marginTop="4dp"
                         android:entries="@array/escolaridade"
-                        android:spinnerMode="dialog"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.4"
-                        app:layout_constraintStart_toEndOf="@+id/txtEscolaridade"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </android.support.constraint.ConstraintLayout>
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/linearLayout5"
+                        android:spinnerMode="dialog" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_fieldset_10"
                     android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:orientation="horizontal">
+                    android:layout_height="55dp"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
 
                     <TextView
                         android:id="@+id/txtArea"
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/width_label"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="8dp"
                         android:text="Área de Graduação:"
-                        android:textSize="14sp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:textSize="14sp" />
 
                     <Spinner
                         android:id="@+id/spnAreaGraduacao"
-                        android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="4dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:entries="@array/areas"
-                        android:spinnerMode="dialog"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.4"
-                        app:layout_constraintStart_toEndOf="@+id/txtArea"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </android.support.constraint.ConstraintLayout>
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/linearLayout6"
+                        android:spinnerMode="dialog" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_fieldset_11"
                     android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
 
                     <TextView
                         android:id="@+id/txtPos"
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/width_label"
                         android:layout_height="wrap_content"
-                        android:layout_marginBottom="8dp"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="8dp"
                         android:text="Gostaria de fazer\numa Pós-Graduação:"
-                        android:textSize="14sp"
-                        app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:textSize="14sp" />
 
                     <Spinner
                         android:id="@+id/spnGostariaPos"
-                        android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="4dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:entries="@array/escolhasPos"
-                        android:spinnerMode="dialog"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.4"
-                        app:layout_constraintStart_toEndOf="@+id/txtPos"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </android.support.constraint.ConstraintLayout>
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/linearLayout7"
+                        android:spinnerMode="dialog" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_fieldset_12"
                     android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
 
                     <TextView
                         android:id="@+id/txtInicioPos"
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/width_label"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="8dp"
                         android:text="Quando pretende iniciar?"
-                        android:textSize="14sp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:textSize="14sp" />
 
                     <Spinner
                         android:id="@+id/spnInicioPos"
-                        android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="4dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:entries="@array/inicioPos"
-                        android:spinnerMode="dialog"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.4"
-                        app:layout_constraintStart_toEndOf="@+id/txtInicioPos"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </android.support.constraint.ConstraintLayout>
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/linearLayout8"
+                        android:spinnerMode="dialog" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_fieldset_13"
                     android:layout_width="match_parent"
-                    android:layout_height="36dp"
-                    android:orientation="horizontal">
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
 
                     <TextView
                         android:id="@+id/txtSorteioPos"
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/width_label"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="8dp"
-                        android:layout_marginTop="8dp"
                         android:text="Quer participar do sorteio dos\ncursos de pós graduação ou\nde extenção gratuitos?"
-                        android:textSize="14sp"
-                        app:layout_constraintLeft_toLeftOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        android:textSize="14sp" />
 
                     <Spinner
                         android:id="@+id/spnSorteio"
-                        android:layout_width="wrap_content"
-                        android:layout_height="25dp"
-                        android:layout_marginLeft="16dp"
-                        android:layout_marginStart="16dp"
-                        android:layout_marginTop="4dp"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
                         android:entries="@array/participarSorteio"
-                        android:spinnerMode="dialog"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintHorizontal_bias="0.4"
-                        app:layout_constraintTop_toTopOf="parent" />
-                </android.support.constraint.ConstraintLayout>
+                        android:spinnerMode="dialog" />
+                </LinearLayout>
 
 
             </android.support.design.widget.TextInputLayout>
