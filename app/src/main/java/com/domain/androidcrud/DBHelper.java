@@ -9,10 +9,28 @@ public class DBHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "Crud.db";
     private static final int DATABASE_VERSION = 1;
     private final String CREATE_TABLE = "CREATE TABLE " +
-            "Clientes (ID INTEGER PRIMARY KEY AUTOINCREMENT, " +
-            "Nome TEXT NOT NULL, " +
-            "Sexo TEXT, UF TEXT NOT NULL, " +
-            "Vip INTEGER NOT NULL);";
+            "popbe (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
+            "data_pesquisa TEXT NOT NULL," +
+            "nome_entrevistador TEXT NOT NULL, " +
+            "nome_entrevistado TEXT NOT NULL, " +
+            "cidade TEXT NOT NULL, " +
+            "cep INTEGER NOT NULL, " +
+            "numero INTEGER NOT NULL, " +
+            "bairro TEXT NOT NULL, " +
+            "estado TEXT NOT NULL, " +
+            "rua TEXT NOT NULL, " +
+            "complemento TEXT, " +
+            "telefone INTEGER NOT NULL, " +
+            "email TEXT NOT NULL, " +
+            "idade TEXT NOT NULL, " +
+            "local_pesquisa TEXT NOT NULL, " +
+            "ocupacao TEXT NOT NULL, " +
+            "escolaridade TEXT NOT NULL, " +
+            "area_graduacao TEXT NOT NULL, " +
+            "opcao_pos TEXT NOT NULL, " +
+            "pretencao_inicio_pos TEXT NOT NULL, " +
+            "paticipar_sorteio TEXT NOT NULL, " +
+            "sexo TEXT);";
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

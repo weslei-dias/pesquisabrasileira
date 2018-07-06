@@ -10,9 +10,7 @@
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
+        android:fillViewport="true">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -20,36 +18,33 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/ll_fieldset_data"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="4dp">
 
                 <TextView
                     android:id="@+id/txtDataPesquisa2"
-                    android:layout_width="8dp"
+                    android:layout_width="@dimen/width_label"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="8dp"
                     android:layout_weight="1"
                     android:text="Data da pesquisa: "
-                    android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
-                    android:textSize="14sp"
-                    app:layout_constraintLeft_toLeftOf="parent" />
+                    android:textSize="16sp" />
 
 
                 <TextView
                     android:id="@+id/txtDataPesquisa"
-                    android:layout_width="wrap_content"
+                    android:layout_width="@dimen/width_label"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:textSize="14sp"
-                    app:layout_constraintLeft_toLeftOf="parent"
-                    tools:layout_editor_absoluteY="0dp" />
+                    android:textSize="16sp" />
             </LinearLayout>
 
             <android.support.design.widget.TextInputLayout
                 android:id="@+id/layout_dados_user"
                 android:layout_width="match_parent"
-                android:layout_height="944dp"
+                android:layout_height="wrap_content"
                 android:layout_marginBottom="28dp"
                 android:layout_marginEnd="16dp"
                 android:layout_marginLeft="16dp"
@@ -60,11 +55,49 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <android.support.design.widget.TextInputEditText
-                    android:id="@+id/txtNome"
+                <LinearLayout
+                    android:id="@+id/ll_fieldset_entrevistador"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:hint="Nome do entrevistado" />
+                    android:orientation="vertical"
+                    android:padding="4dp">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/til_enrevistador"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/txtNomeEntrevistador"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Nome do entrevistador" />
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/ll_fieldset_entrevistado"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="4dp">
+
+                    <android.support.design.widget.TextInputLayout
+                        android:id="@+id/til_enrevistado"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1">
+
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/txtNomeEntrevistado"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Nome do entrevistado" />
+                    </android.support.design.widget.TextInputLayout>
+
+                </LinearLayout>
 
                 <TextView
                     android:id="@+id/sub_title_2"
@@ -94,8 +127,8 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1">
 
-                        <EditText
-                            android:id="@+id/et_zip_code"
+                        <android.support.design.widget.TextInputEditText
+                            android:id="@+id/txtZipCode"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_centerHorizontal="true"
@@ -136,7 +169,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1">
 
-                        <EditText
+                        <android.support.design.widget.TextInputEditText
                             android:id="@+id/et_street"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -153,7 +186,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1">
 
-                        <EditText
+                        <android.support.design.widget.TextInputEditText
                             android:id="@+id/et_complement"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -183,7 +216,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1">
 
-                        <EditText
+                        <android.support.design.widget.TextInputEditText
                             android:id="@+id/et_number"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -200,7 +233,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1">
 
-                        <EditText
+                        <android.support.design.widget.TextInputEditText
                             android:id="@+id/et_neighbor"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -229,7 +262,7 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="1">
 
-                        <EditText
+                        <android.support.design.widget.TextInputEditText
                             android:id="@+id/et_city"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
@@ -296,48 +329,43 @@
                     </android.support.design.widget.TextInputLayout>
                 </LinearLayout>
 
-                <android.support.constraint.ConstraintLayout
-                    android:id="@+id/linearLayout"
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:id="@+id/ll_fieldset_sexo"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_alignParentLeft="true"
-                    android:layout_alignParentStart="true"
-                    android:layout_marginLeft="8dp"
-                    android:orientation="horizontal">
+                    android:orientation="horizontal"
+                    android:padding="4dp">
 
                     <TextView
                         android:id="@+id/txtSexo"
-                        android:layout_width="wrap_content"
+                        android:layout_width="@dimen/width_label"
                         android:layout_height="wrap_content"
-                        android:text="Sexo: "
-                        android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
-                        android:textSize="14sp"
-                        tools:layout_editor_absoluteX="4dp"
-                        tools:layout_editor_absoluteY="8dp" />
+                        android:text="Sexo:"
+                        android:textSize="14sp" />
 
 
-                    <RadioButton
-                        android:id="@+id/rbMasculino"
-                        android:layout_width="wrap_content"
+                    <RadioGroup
+                        android:id="@+id/rgSexo"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="49dp"
-                        android:layout_marginStart="49dp"
-                        android:text="Masculino"
-                        app:layout_constraintEnd_toStartOf="@+id/rbFeminino"
-                        app:layout_constraintStart_toEndOf="@+id/txtSexo"
-                        tools:layout_editor_absoluteY="0dp" />
+                        android:orientation="horizontal">
 
-                    <RadioButton
-                        android:id="@+id/rbFeminino"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="Feminino"
-                        app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintStart_toEndOf="@+id/rbMasculino"
-                        tools:layout_editor_absoluteY="0dp" />
+                        <RadioButton
+                            android:id="@+id/rbMasculino"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Masculino" />
+
+                        <RadioButton
+                            android:id="@+id/rbFeminino"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Feminino" />
+
+                    </RadioGroup>
 
 
-                </android.support.constraint.ConstraintLayout>
+                </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/ll_fieldset_6"
@@ -483,7 +511,7 @@
                     <TextView
                         android:id="@+id/txtInicioPos"
                         android:layout_width="@dimen/width_label"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:text="Quando pretende iniciar?"
                         android:textSize="14sp" />
 
@@ -505,7 +533,7 @@
                     <TextView
                         android:id="@+id/txtSorteioPos"
                         android:layout_width="@dimen/width_label"
-                        android:layout_height="wrap_content"
+                        android:layout_height="match_parent"
                         android:text="Quer participar do sorteio dos\ncursos de pós graduação ou\nde extenção gratuitos?"
                         android:textSize="14sp" />
 
@@ -520,54 +548,25 @@
 
             </android.support.design.widget.TextInputLayout>
 
-            <!--<CheckBox-->
-            <!--android:id="@+id/chkVip"-->
-            <!--android:layout_width="0dp"-->
-            <!--android:layout_height="wrap_content"-->
-            <!--android:layout_marginTop="4dp"-->
-            <!--android:text="Este cliente é VIP"-->
-            <!--app:layout_constraintEnd_toEndOf="parent"-->
-            <!--app:layout_constraintHorizontal_bias="0.0"-->
-            <!--app:layout_constraintLeft_toLeftOf="parent"-->
-            <!--app:layout_constraintRight_toRightOf="parent"-->
-            <!--app:layout_constraintStart_toStartOf="parent"-->
-            <!--app:layout_constraintTop_toBottomOf="@+id/textView2" />-->
-
-            <!--</android.support.constraint.ConstraintLayout>-->
-
             <LinearLayout
-                android:layout_width="361dp"
+                android:id="@+id/ll_fieldset_btn"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_alignParentLeft="false"
-                android:layout_alignParentStart="true"
-                android:layout_marginLeft="8dp"
-                android:layout_marginRight="8dp"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:padding="8dp">
 
                 <Button
                     android:id="@+id/btnCancelar"
                     android:layout_width="173dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginStart="8dp"
-                    android:text="Cancelar"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintLeft_toLeftOf="parent" />
+                    android:layout_marginRight="4dp"
+                    android:text="Cancelar" />
 
                 <Button
                     android:id="@+id/btnSalvar"
                     android:layout_width="175dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:layout_marginEnd="8dp"
-                    android:layout_marginLeft="8dp"
-                    android:layout_marginRight="8dp"
                     android:text="Salvar"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintHorizontal_bias="0.48"
-                    app:layout_constraintLeft_toRightOf="@+id/btnCancelar"
-                    app:layout_constraintRight_toRightOf="parent"
                     tools:background="@color/colorPrimary" />
             </LinearLayout>
 

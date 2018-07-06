@@ -33,7 +33,7 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteHolder> {
 
     @Override
     public void onBindViewHolder(@NonNull final ClienteHolder clienteHolder, final int i) {
-        clienteHolder.nomeCliente.setText(clientes.get(i).getNome());
+        clienteHolder.nomeCliente.setText(clientes.get(i).getNomeEntrevistado());
         clienteHolder.btnEditar.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
