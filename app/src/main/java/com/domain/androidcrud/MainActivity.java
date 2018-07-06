@@ -229,6 +229,7 @@ public class MainActivity extends AppCompatActivity {
         configurarRecycler();
     }
 
+
     private void preencherDadosSeEdicao(Intent intent) {
         if(intent.hasExtra("cliente")){
             findViewById(R.id.includemain).setVisibility(View.INVISIBLE);
@@ -363,6 +364,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+
     }
 
     private RecyclerView recyclerView;
