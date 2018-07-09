@@ -6,18 +6,29 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
-    <TextView
-        android:id="@+id/nomeCliente"
+    <LinearLayout
+        android:id="@+id/ll_fieldset_btn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:text="Nome do cliente"
+        android:orientation="vertical"
+        android:padding="8dp">
+    <TextView
+        android:id="@+id/nomeCliente"
+        android:layout_height="wrap_content"
+        android:layout_width="@dimen/width_label_item_content"
         android:textAppearance="@android:style/TextAppearance.DeviceDefault.Large"
-        app:layout_constraintHorizontal_bias="0.052"
-        app:layout_constraintLeft_toLeftOf="parent"
+        android:text="Nome do cliente"
+        />
+
+    <TextView
+        android:id="@+id/dataPesquisa"
+        android:layout_width="@dimen/width_label_item_content"
+        android:layout_height="wrap_content"
+        android:text="Data da pesquisa"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintRight_toLeftOf="@+id/btnEdit"
-        app:layout_constraintTop_toTopOf="parent" />
+        />
+    </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/btnEdit"
@@ -25,11 +36,12 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
+        android:layout_marginRight="2dp"
         android:clickable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintRight_toLeftOf="@+id/btnDelete"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@android:drawable/ic_menu_edit" />
+        app:srcCompat="@drawable/edit" />
 
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/btnDelete"

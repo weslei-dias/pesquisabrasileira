@@ -9,7 +9,7 @@
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:fillViewport="true">
 
         <LinearLayout
@@ -553,20 +553,23 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
+                android:weightSum="2"
                 android:padding="8dp">
 
                 <Button
                     android:id="@+id/btnCancelar"
-                    android:layout_width="173dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginRight="4dp"
+                    android:layout_weight="1"
                     android:text="Cancelar" />
 
                 <Button
                     android:id="@+id/btnSalvar"
-                    android:layout_width="175dp"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="Salvar"
+                    android:layout_weight="1"
+                    android:textColor="#FFFF"
                     tools:background="@color/colorPrimary" />
             </LinearLayout>
 
