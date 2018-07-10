@@ -7,6 +7,7 @@ import lombok.Data;
 @AllArgsConstructor
 public class Cliente {
     private Integer id;
+    private String dataPesquisa;
     private String nomeEntrevistador;
     private String nomeEntrevistado;
     private String sexo;
@@ -27,4 +28,7 @@ public class Cliente {
     private String opcaoPos;
     private String pretencaoInicioPos;
     private String paticiparSorteio;
+    private String inicioPos;
+    private String outroLocal;
+    private String outraArea;
 }

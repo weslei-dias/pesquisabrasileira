@@ -26,6 +26,7 @@ dependencies {
     implementation 'com.android.support:design:27.1.0'
     implementation 'com.google.code.gson:gson:2.7'
     implementation 'com.github.santalu:mask-edittext:1.0.7'
+    implementation 'org.apache.commons:commons-lang3:3.6'
     compileOnly 'org.projectlombok:lombok:1.16.22'
     annotationProcessor 'org.projectlombok:lombok:1.16.22'
     testImplementation 'junit:junit:4.12'

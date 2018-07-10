@@ -34,6 +34,7 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteHolder> {
     @Override
     public void onBindViewHolder(@NonNull final ClienteHolder clienteHolder, final int i) {
         clienteHolder.nomeCliente.setText(clientes.get(i).getNomeEntrevistado());
+        clienteHolder.dataPesquisa.setText(clientes.get(i).getDataPesquisa());
         clienteHolder.btnEditar.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -53,7 +54,7 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteHolder> {
                 final View view = v;
                 AlertDialog.Builder builder = new AlertDialog.Builder(view.getContext());
                 builder.setTitle("Confirmação")
-                        .setMessage("Tem certeza que deseja excluir este cliente?")
+                        .setMessage("Tem certeza que deseja excluir esta pesquisa?")
                         .setPositiveButton("Excluir", new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialog, int which) {
@@ -62,10 +63,10 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteHolder> {
                                 boolean sucesso = dao.excluir(cliente.getId());
                                 if(sucesso) {
                                     removerCliente(cliente);
-                                    Snackbar.make(view, "Excluiu!", Snackbar.LENGTH_LONG)
+                                    Snackbar.make(view, "Pesquisa excluída!", Snackbar.LENGTH_LONG)
                                             .setAction("Action", null).show();
                                 }else{
-                                    Snackbar.make(view, "Erro ao excluir o cliente!", Snackbar.LENGTH_LONG)
+                                    Snackbar.make(view, "Erro ao excluir a pesquisa!", Snackbar.LENGTH_LONG)
                                             .setAction("Action", null).show();
                                 }
                             }

@@ -30,7 +30,10 @@ public class DBHelper extends SQLiteOpenHelper {
             "opcao_pos TEXT NOT NULL, " +
             "pretencao_inicio_pos TEXT NOT NULL, " +
             "paticipar_sorteio TEXT NOT NULL, " +
-            "sexo TEXT);";
+            "sexo TEXT," +
+            "inicio_pos TEXT," +
+            "outro_local TEXT," +
+            "outra_area TEXT);";
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

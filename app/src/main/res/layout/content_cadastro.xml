@@ -411,6 +411,24 @@
                         android:spinnerMode="dialog" />
                 </LinearLayout>
 
+            <android.support.design.widget.TextInputLayout
+                    android:visibility="gone"
+                    android:id="@+id/ll_outroLocal"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <EditText
+                        android:id="@+id/txtOutroLocal"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:hint="Outro Local de Pesquisa"
+                        android:inputType="text" />
+            </android.support.design.widget.TextInputLayout>
+
                 <LinearLayout
                     android:id="@+id/ll_fieldset_8"
                     android:layout_width="match_parent"
@@ -478,6 +496,23 @@
                         android:entries="@array/areas"
                         android:spinnerMode="dialog" />
                 </LinearLayout>
+                <android.support.design.widget.TextInputLayout
+                    android:visibility="gone"
+                    android:id="@+id/ll_outraArea"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <EditText
+                        android:id="@+id/txtOutroArea"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:hint="Outro área de graduação"
+                        android:inputType="text" />
+                </android.support.design.widget.TextInputLayout>
 
                 <LinearLayout
                     android:id="@+id/ll_fieldset_11"
@@ -523,6 +558,24 @@
                         android:spinnerMode="dialog" />
                 </LinearLayout>
 
+                <android.support.design.widget.TextInputLayout
+                    android:visibility="gone"
+                    android:id="@+id/ll_mesesInicioPos"
+                    android:layout_width="match_parent"
+                    android:layout_height="fill_parent"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <EditText
+                        android:id="@+id/txtMesesInicioPos"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerHorizontal="true"
+                        android:layout_centerVertical="true"
+                        android:hint="Meses para inicio da pós"
+                        android:inputType="text" />
+                </android.support.design.widget.TextInputLayout>
+
                 <LinearLayout
                     android:id="@+id/ll_fieldset_13"
                     android:layout_width="match_parent"
@@ -553,24 +606,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:weightSum="2"
-                android:padding="8dp">
+                android:padding="8dp"
+                android:weightSum="2">
 
                 <Button
                     android:id="@+id/btnCancelar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Cancelar" />
+                    android:text="Cancelar"
+                    android:layout_marginRight="3dp"
+                    android:background="@color/secondary_text"/>
 
                 <Button
                     android:id="@+id/btnSalvar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="Salvar"
                     android:layout_weight="1"
+                    android:text="Salvar"
                     android:textColor="#FFFF"
-                    tools:background="@color/colorPrimary" />
+                    android:background="@color/colorPrimary"
+                    />
             </LinearLayout>
 
         </LinearLayout>
