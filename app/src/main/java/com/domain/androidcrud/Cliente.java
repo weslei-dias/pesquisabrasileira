@@ -2,6 +2,7 @@ package com.domain.androidcrud;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 
 @Data
 @AllArgsConstructor
@@ -31,4 +32,5 @@ public class Cliente {
     private String inicioPos;
     private String outroLocal;
     private String outraArea;
+
 }

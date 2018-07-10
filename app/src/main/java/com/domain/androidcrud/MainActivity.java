@@ -392,8 +392,8 @@ public class MainActivity extends AppCompatActivity {
             Spinner spnParticiparSorteio = findViewById(R.id.spnSorteio);
 
             txtDataPesquisa.setText(clienteEditado.getDataPesquisa());
-            txtNomeEntrevistado.setText(clienteEditado.getNomeEntrevistador());
-            txtNomeEntrevistador.setText(clienteEditado.getNomeEntrevistado());
+            txtNomeEntrevistado.setText(clienteEditado.getNomeEntrevistado());
+            txtNomeEntrevistador.setText(clienteEditado.getNomeEntrevistador());
             txtCep.setText(clienteEditado.getCep());
             txtRua.setText(clienteEditado.getRua());
             txtComplemento.setText(clienteEditado.getComplemento());
@@ -473,9 +473,12 @@ public class MainActivity extends AppCompatActivity {
         setField( R.id.et_city, address.getLocalidade() );
         setSpinner( R.id.sp_state, R.array.estados, address.getUf());
 
-        Snackbar.make(getCurrentFocus(),
-                "Não foi possível recuperar o cep informado", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show();
+        if (address == null){
+            Snackbar.make(getCurrentFocus(),
+                    "Não foi possível recuperar o cep informado", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+        }
+
     }
 
     private void setField( int fieldId, String data ){

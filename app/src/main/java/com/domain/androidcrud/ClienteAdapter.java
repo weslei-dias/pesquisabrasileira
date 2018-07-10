@@ -14,6 +14,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import java.util.List;
 
 public class ClienteAdapter extends RecyclerView.Adapter<ClienteHolder> {
@@ -89,14 +91,26 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteHolder> {
     }
 
     public void atualizarCliente(Cliente cliente) {
-        clientes.set(clientes.indexOf(cliente), cliente);
-        notifyItemChanged(clientes.indexOf(cliente));
+
+        for (int i = 0; i < clientes.size(); i++) {
+            Cliente cli = clientes.get(i);
+            if (cli.getId().equals(cliente.getId())){
+                clientes.set(i, cliente);
+                notifyItemChanged(i);
+                break;
+            }
+        }
     }
 
     public void removerCliente(Cliente cliente){
-        int position = clientes.indexOf(cliente);
-        clientes.remove(position);
-        notifyItemRemoved(position);
+        for (int i = 0; i < clientes.size(); i++) {
+            Cliente cli = clientes.get(i);
+            if (cli.getId().equals(cliente.getId())){
+                clientes.remove(i);
+                notifyItemRemoved(i);
+                break;
+            }
+        }
     }
 
     private Activity getActivity(View view) {
