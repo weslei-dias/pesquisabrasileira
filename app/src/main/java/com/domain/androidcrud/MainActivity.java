@@ -42,11 +42,21 @@ import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.util.Calendar;
 
+import okhttp3.MediaType;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
+import rx.Subscriber;
+import rx.android.schedulers.AndroidSchedulers;
+import rx.schedulers.Schedulers;
+
 public class MainActivity extends AppCompatActivity {
 
     private EditText etZipCode;
     private Util util;
     private ProgressBar progressBar;
+    private APIService mAPIService;
 
 
     @Override
@@ -81,6 +91,7 @@ public class MainActivity extends AppCompatActivity {
                 R.id.et_number,
                 R.id.tv_zip_code_search);
 
+        mAPIService = ApiUtils.getAPIService();
 
         //verifica se começou agora ou se veio de uma edição
         Intent intent = getIntent();
@@ -180,6 +191,7 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 EditText txtNomeEntrevistador = findViewById(R.id.txtNomeEntrevistador);
+                EditText txtUnidadeEntrevistador = findViewById(R.id.txtUnidadeEntrevistador);
                 EditText txtNomeEntrevistado = findViewById(R.id.txtNomeEntrevistado);
                 EditText txtCep = findViewById(R.id.txtZipCode);
                 EditText txtRua = findViewById(R.id.et_street);
@@ -203,6 +215,7 @@ public class MainActivity extends AppCompatActivity {
                 Spinner spnParticiparSorteio = findViewById(R.id.spnSorteio);
 
                 String nomeEntrevistador = txtNomeEntrevistador.getText().toString();
+                String unidadeEntrevistador = txtUnidadeEntrevistador.getText().toString();
                 String nomeEntrevistado = txtNomeEntrevistado.getText().toString();
                 String cep = txtCep.getText().toString();
                 String bairro = txtBairro.getText().toString();
@@ -255,6 +268,7 @@ public class MainActivity extends AppCompatActivity {
                 ContentValues cv = new ContentValues();
                 cv.put("data_pesquisa", dataAtual);
                 cv.put("nome_entrevistador", nomeEntrevistador);
+                cv.put("unidade_entrevista", unidadeEntrevistador);
                 cv.put("nome_entrevistado", nomeEntrevistado);
                 cv.put("sexo", sexo);
                 cv.put("cidade", cidade);
@@ -297,7 +311,12 @@ public class MainActivity extends AppCompatActivity {
                         }else {
                             clienteAdapter.adicionarCliente(cliente);
                         }
+
+                        sendPost(cliente);
+
+
                         txtNomeEntrevistado.setText("");
+                        txtUnidadeEntrevistador.setText("");
                         txtNomeEntrevistador.setText("");
                         txtCep.setText("");
                         txtRua.setText("");
@@ -369,6 +388,7 @@ public class MainActivity extends AppCompatActivity {
             clienteEditado = new ClienteDao(this).getCliente(idCliente);
             TextView txtDataPesquisa = findViewById(R.id.txtDataPesquisa);
             EditText txtNomeEntrevistador = findViewById(R.id.txtNomeEntrevistador);
+            EditText txtUnidadeEntrevistador = findViewById(R.id.txtUnidadeEntrevistador);
             EditText txtNomeEntrevistado = findViewById(R.id.txtNomeEntrevistado);
             TextInputEditText txtCep = (TextInputEditText) findViewById(R.id.txtZipCode);
             EditText txtRua = findViewById(R.id.et_street);
@@ -393,6 +413,7 @@ public class MainActivity extends AppCompatActivity {
 
             txtDataPesquisa.setText(clienteEditado.getDataPesquisa());
             txtNomeEntrevistado.setText(clienteEditado.getNomeEntrevistado());
+            txtUnidadeEntrevistador.setText(clienteEditado.getUnidadeEntrevista());
             txtNomeEntrevistador.setText(clienteEditado.getNomeEntrevistador());
             txtCep.setText(clienteEditado.getCep());
             txtRua.setText(clienteEditado.getRua());
@@ -540,5 +561,32 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         return index;
+    }
+
+    public void sendPost(Cliente cliente) {
+
+        // RxJava
+        mAPIService.savePost(cliente).subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<Cliente>() {
+                    @Override
+                    public void onCompleted() {
+
+                    }
+
+                    @Override
+                    public void onError(Throwable e) {
+                        e.printStackTrace();
+                    }
+
+                    @Override
+                    public void onNext(Cliente post) {
+                        showResponse(post.toString());
+                    }
+                });
+    }
+
+    public void showResponse(String response) {
+        System.out.println(response);
     }
 }

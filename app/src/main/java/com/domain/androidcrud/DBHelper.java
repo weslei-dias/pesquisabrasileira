@@ -12,6 +12,7 @@ public class DBHelper extends SQLiteOpenHelper {
             "popbe (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "data_pesquisa TEXT NOT NULL," +
             "nome_entrevistador TEXT NOT NULL, " +
+            "unidade_entrevista TEXT NOT NULL, " +
             "nome_entrevistado TEXT NOT NULL, " +
             "cidade TEXT NOT NULL, " +
             "cep INTEGER NOT NULL, " +

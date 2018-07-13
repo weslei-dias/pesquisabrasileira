@@ -40,6 +40,7 @@ public class ClienteDao {
             int id = cursor.getInt(cursor.getColumnIndex("id"));
             String dataPesquisa = cursor.getString(cursor.getColumnIndex("data_pesquisa"));
             String nomeEntrevistador = cursor.getString(cursor.getColumnIndex("nome_entrevistador"));
+            String unidadeEntrevista = cursor.getString(cursor.getColumnIndex("unidade_entrevista"));
             String nomeEntrevistado = cursor.getString(cursor.getColumnIndex("nome_entrevistado"));
             String sexo = cursor.getString(cursor.getColumnIndex("sexo"));
             String cidade = cursor.getString(cursor.getColumnIndex("cidade"));
@@ -62,7 +63,7 @@ public class ClienteDao {
             String inicioPos = cursor.getString(cursor.getColumnIndex("inicio_pos"));
             String outroLocal = cursor.getString(cursor.getColumnIndex("outro_local"));
             String outraArea = cursor.getString(cursor.getColumnIndex("outra_area"));
-            clientes.add(new Cliente(id, dataPesquisa, nomeEntrevistador, nomeEntrevistado, sexo, cidade, cep,
+            clientes.add(new Cliente(id, dataPesquisa, nomeEntrevistador, unidadeEntrevista, nomeEntrevistado, sexo, cidade, cep,
                     bairro, numero, estado, rua, complemento, telefone, email, idade, localPesquisa,
                     ocupacao, escolaridade,areaGraduacao, opcaoPos, pretencaoInicioPos, paticiparSorteio,
                     inicioPos, outroLocal, outraArea));
@@ -77,6 +78,7 @@ public class ClienteDao {
             int id = cursor.getInt(cursor.getColumnIndex("id"));
             String dataPesquisa = cursor.getString(cursor.getColumnIndex("data_pesquisa"));
             String nomeEntrevistador = cursor.getString(cursor.getColumnIndex("nome_entrevistador"));
+            String unidadeEntrevista = cursor.getString(cursor.getColumnIndex("unidade_entrevista"));
             String nomeEntrevistado = cursor.getString(cursor.getColumnIndex("nome_entrevistado"));
             String sexo = cursor.getString(cursor.getColumnIndex("sexo"));
             String cidade = cursor.getString(cursor.getColumnIndex("cidade"));
@@ -100,7 +102,7 @@ public class ClienteDao {
             String outroLocal = cursor.getString(cursor.getColumnIndex("outro_local"));
             String outraArea = cursor.getString(cursor.getColumnIndex("outra_area"));
             cursor.close();
-            return new Cliente(id, dataPesquisa, nomeEntrevistador, nomeEntrevistado, sexo, cidade, cep,
+            return new Cliente(id, dataPesquisa, nomeEntrevistador, unidadeEntrevista, nomeEntrevistado, sexo, cidade, cep,
                     bairro, numero, estado, rua, complemento, telefone, email, idade, localPesquisa,
                     ocupacao, escolaridade,areaGraduacao, opcaoPos, pretencaoInicioPos, paticiparSorteio,
                     inicioPos, outroLocal, outraArea);
@@ -116,6 +118,7 @@ public class ClienteDao {
         while(cursor.moveToNext()){
             String dataPesquisa = cursor.getString(cursor.getColumnIndex("data_pesquisa"));
             String nomeEntrevistador = cursor.getString(cursor.getColumnIndex("nome_entrevistador"));
+            String unidadeEntrevista = cursor.getString(cursor.getColumnIndex("unidade_entrevista"));
             String nomeEntrevistado = cursor.getString(cursor.getColumnIndex("nome_entrevistado"));
             String sexo = cursor.getString(cursor.getColumnIndex("sexo"));
             String cidade = cursor.getString(cursor.getColumnIndex("cidade"));
@@ -139,7 +142,7 @@ public class ClienteDao {
             String outroLocal = cursor.getString(cursor.getColumnIndex("outro_local"));
             String outraArea = cursor.getString(cursor.getColumnIndex("outra_area"));
             cursor.close();
-            cliente = new Cliente(id, dataPesquisa, nomeEntrevistador, nomeEntrevistado, sexo, cidade, cep,
+            cliente = new Cliente(id, dataPesquisa, nomeEntrevistador, unidadeEntrevista, nomeEntrevistado, sexo, cidade, cep,
                     bairro, numero, estado, rua, complemento, telefone, email, idade, localPesquisa,
                     ocupacao, escolaridade,areaGraduacao, opcaoPos, pretencaoInicioPos, paticiparSorteio,
                     inicioPos, outroLocal, outraArea);
