@@ -98,6 +98,18 @@
                     </android.support.design.widget.TextInputLayout>
 
                 </LinearLayout>
+
+                <android.support.v7.widget.CardView
+                    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/card_view"
+                    android:layout_gravity="center"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    card_view:cardCornerRadius="4dp">
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
                 <LinearLayout
                     android:id="@+id/ll_fieldset_entrevistado"
                     android:layout_width="match_parent"
@@ -354,15 +366,15 @@
                     android:id="@+id/ll_fieldset_sexo"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:padding="4dp">
 
                     <TextView
                         android:id="@+id/txtSexo"
-                        android:layout_width="@dimen/width_label"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Sexo:"
-                        android:textSize="14sp" />
+                        android:textSize="15sp" />
 
 
                     <RadioGroup
@@ -384,55 +396,59 @@
                             android:text="Feminino" />
 
                     </RadioGroup>
-
-
                 </LinearLayout>
+                    </LinearLayout>
+                </android.support.v7.widget.CardView>
 
                 <LinearLayout
                     android:id="@+id/ll_fieldset_6"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:padding="4dp">
 
                     <TextView
                         android:id="@+id/txtIdade"
-                        android:layout_width="120dp"
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="Idade:"
-                        android:textSize="14sp" />
+                        android:textSize="15sp" />
 
                     <Spinner
                         android:id="@+id/spnIdade"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:entries="@array/idades"
-                        android:spinnerMode="dialog" />
+                        android:spinnerMode="dialog"
+                        android:textSize="15sp"
+                        />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/ll_fieldset_7"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:padding="4dp">
 
                     <TextView
                         android:id="@+id/txtLocalPesquisa"
-                        android:layout_width="@dimen/width_label"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Local da pesquisa:"
-                        android:textSize="14sp" />
+                        android:textSize="15sp" />
 
                     <Spinner
                         android:id="@+id/spnLocalPesquisa"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:entries="@array/locais"
-                        android:spinnerMode="dialog" />
+                        android:spinnerMode="dialog"
+                        android:textSize="15sp"
+                        />
                 </LinearLayout>
 
-            <android.support.design.widget.TextInputLayout
+                <android.support.design.widget.TextInputLayout
                     android:visibility="gone"
                     android:id="@+id/ll_outroLocal"
                     android:layout_width="match_parent"
@@ -447,22 +463,23 @@
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
                         android:hint="Outro Local de Pesquisa"
+                        android:textSize="15sp"
                         android:inputType="text" />
             </android.support.design.widget.TextInputLayout>
 
                 <LinearLayout
                     android:id="@+id/ll_fieldset_8"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:padding="4dp">
 
                     <TextView
                         android:id="@+id/txtLocalOcupacao"
-                        android:layout_width="@dimen/width_label"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Ocupação:"
-                        android:textSize="14sp" />
+                        android:textSize="15sp" />
 
                     <Spinner
                         android:id="@+id/spnOcupacao"
@@ -470,22 +487,23 @@
                         android:layout_height="match_parent"
                         android:layout_marginTop="4dp"
                         android:entries="@array/ocupacoes"
+                        android:textSize="15sp"
                         android:spinnerMode="dialog" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/ll_fieldset_9"
                     android:layout_width="match_parent"
-                    android:layout_height="50dp"
-                    android:orientation="horizontal"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
                     android:padding="4dp">
 
                     <TextView
                         android:id="@+id/txtEscolaridade"
-                        android:layout_width="@dimen/width_label"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Escolaridade:"
-                        android:textSize="14sp" />
+                        android:textSize="15sp" />
 
                     <Spinner
                         android:id="@+id/spnEscolaridade"
@@ -493,28 +511,30 @@
                         android:layout_height="match_parent"
                         android:layout_marginTop="4dp"
                         android:entries="@array/escolaridade"
+                        android:textSize="15sp"
                         android:spinnerMode="dialog" />
                 </LinearLayout>
 
                 <LinearLayout
                     android:id="@+id/ll_fieldset_10"
                     android:layout_width="match_parent"
-                    android:layout_height="55dp"
-                    android:orientation="horizontal"
+                    android:layout_height="match_parent"
+                    android:orientation="vertical"
                     android:padding="4dp">
 
                     <TextView
                         android:id="@+id/txtArea"
-                        android:layout_width="@dimen/width_label"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Área de Graduação:"
-                        android:textSize="14sp" />
+                        android:textSize="15sp" />
 
                     <Spinner
                         android:id="@+id/spnAreaGraduacao"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:entries="@array/areas"
+                        android:textSize="15sp"
                         android:spinnerMode="dialog" />
                 </LinearLayout>
                 <android.support.design.widget.TextInputLayout
@@ -539,21 +559,22 @@
                     android:id="@+id/ll_fieldset_11"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:padding="4dp">
 
                     <TextView
                         android:id="@+id/txtPos"
-                        android:layout_width="@dimen/width_label"
+                        android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Gostaria de fazer\numa Pós-Graduação:"
-                        android:textSize="14sp" />
+                        android:text="Gostaria de fazer uma Pós-Graduação:"
+                        android:textSize="15sp" />
 
                     <Spinner
                         android:id="@+id/spnGostariaPos"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:entries="@array/escolhasPos"
+                        android:textSize="15sp"
                         android:spinnerMode="dialog" />
                 </LinearLayout>
 
@@ -561,21 +582,22 @@
                     android:id="@+id/ll_fieldset_12"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:padding="4dp">
 
                     <TextView
                         android:id="@+id/txtInicioPos"
-                        android:layout_width="@dimen/width_label"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
                         android:text="Quando pretende iniciar?"
-                        android:textSize="14sp" />
+                        android:textSize="15sp" />
 
                     <Spinner
                         android:id="@+id/spnInicioPos"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:entries="@array/inicioPos"
+                        android:textSize="15sp"
                         android:spinnerMode="dialog" />
                 </LinearLayout>
 
@@ -594,33 +616,36 @@
                         android:layout_centerHorizontal="true"
                         android:layout_centerVertical="true"
                         android:hint="Meses para inicio da pós"
-                        android:inputType="text" />
+                        android:inputType="text"
+                        android:textSize="15sp"
+                        />
                 </android.support.design.widget.TextInputLayout>
 
                 <LinearLayout
                     android:id="@+id/ll_fieldset_13"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="horizontal"
+                    android:orientation="vertical"
                     android:padding="4dp">
 
                     <TextView
                         android:id="@+id/txtSorteioPos"
-                        android:layout_width="@dimen/width_label"
+                        android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:text="Quer participar do sorteio dos\ncursos de pós graduação ou\nde extenção gratuitos?"
-                        android:textSize="14sp" />
+                        android:text="Quer participar do sorteio dos cursos de pós graduação ou de extenção gratuitos?"
+                        android:textSize="15sp" />
 
                     <Spinner
                         android:id="@+id/spnSorteio"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:entries="@array/participarSorteio"
+                        android:textSize="15sp"
                         android:spinnerMode="dialog" />
                 </LinearLayout>
 
-
             </android.support.design.widget.TextInputLayout>
+
 
             <LinearLayout
                 android:id="@+id/ll_fieldset_btn"
