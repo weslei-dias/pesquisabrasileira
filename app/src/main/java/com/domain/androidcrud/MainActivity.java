@@ -22,6 +22,7 @@ import android.widget.Button;
 import android.widget.CalendarView;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -113,6 +114,36 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Spinner spinnerOpcaoPos = findViewById(R.id.spnGostariaPos);
+        spinnerOpcaoPos.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItemText = (String) parent.getItemAtPosition(position);
+
+                TextInputLayout layoutOutro = findViewById(R.id.ll_pos_realizada);
+                LinearLayout layoutIniciarPos = findViewById(R.id.ll_inicio_pos);
+                if (selectedItemText.equals("Já fiz")){
+                    layoutOutro.setVisibility(View.VISIBLE);
+                    layoutIniciarPos.setVisibility(View.GONE);
+                }else {
+                    layoutOutro.setVisibility(View.GONE);
+                }
+
+                if (selectedItemText.equals("Sim gostaria")){
+                    layoutIniciarPos.setVisibility(View.VISIBLE);
+                    layoutOutro.setVisibility(View.GONE);
+                }else {
+                    layoutIniciarPos.setVisibility(View.GONE);
+                }
+
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         Spinner spinnerLocal = findViewById(R.id.spnLocalPesquisa);
         spinnerLocal.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -141,12 +172,19 @@ public class MainActivity extends AppCompatActivity {
                 String selectedItemText = (String) parent.getItemAtPosition(position);
 
                 TextInputLayout layoutOutro = findViewById(R.id.ll_outraArea);
+                TextInputLayout layoutFinalGraduacao = findViewById(R.id.ll_final_graduacao);
                 if (selectedItemText.equals("Outra")){
+                    layoutFinalGraduacao.setVisibility(View.GONE);
                     layoutOutro.setVisibility(View.VISIBLE);
                 }else {
                     layoutOutro.setVisibility(View.GONE);
                 }
-
+                if (selectedItemText.equals("Em andamento")){
+                    layoutOutro.setVisibility(View.GONE);
+                    layoutFinalGraduacao.setVisibility(View.VISIBLE);
+                }else {
+                    layoutFinalGraduacao.setVisibility(View.GONE);
+                }
             }
 
             @Override
@@ -166,7 +204,6 @@ public class MainActivity extends AppCompatActivity {
                 }else {
                     layoutOutro.setVisibility(View.GONE);
                 }
-
             }
 
             @Override
@@ -241,7 +278,18 @@ public class MainActivity extends AppCompatActivity {
                     EditText txtOutraArea = findViewById(R.id.txtOutroArea);
                     outraArea = txtOutraArea.getText().toString();
                 }
+
+                String tempoFinalizarGraduacao = null;
+                if (areaGraduacao.equals("Em andamento")){
+                    EditText txtFinalGraduacao = findViewById(R.id.txtFinalGraduacao);
+                    tempoFinalizarGraduacao = txtFinalGraduacao.getText().toString();
+                }
                 String opcaoPos = spnOpcaoPos.getSelectedItem().toString();
+                String qualPos = null;
+                if(opcaoPos.equals("Já fiz")){
+                    EditText txtQualPos = findViewById(R.id.txtQualPos);
+                    qualPos = txtQualPos.getText().toString();
+                }
                 String pretencaoInicioPos = spnInicioPos.getSelectedItem().toString();
                 String inicioPos = null;
                 if (pretencaoInicioPos.equals("Em x meses")){
@@ -289,11 +337,13 @@ public class MainActivity extends AppCompatActivity {
                 cv.put("escolaridade", escolaridade);
                 cv.put("area_graduacao", areaGraduacao);
                 cv.put("opcao_pos", opcaoPos);
+                cv.put("qual_pos", qualPos);
                 cv.put("pretencao_inicio_pos", pretencaoInicioPos);
                 cv.put("paticipar_sorteio", paticiparSorteio);
                 cv.put("inicio_pos", inicioPos);
                 cv.put("outro_local", outroLocal);
                 cv.put("outra_area", outraArea);
+                cv.put("tempo_conclusao_graduacao", tempoFinalizarGraduacao);
 
                 if (isFormValido){
                     if (clienteEditado != null){
@@ -438,6 +488,10 @@ public class MainActivity extends AppCompatActivity {
                 txtOutraArea.setText(clienteEditado.getOutraArea());
             }
             spnOpcaoPos.setSelection(getIndex(spnOpcaoPos, clienteEditado.getOpcaoPos()));
+            if (spnOpcaoPos.getSelectedItem().toString().equals("Já fiz")){
+                EditText txtQualPos = findViewById(R.id.txtQualPos);
+                txtQualPos.setText(clienteEditado.getQualPos());
+            }
             spnInicioPos.setSelection(getIndex(spnInicioPos, clienteEditado.getPretencaoInicioPos()));
             if (spnInicioPos.getSelectedItem().toString().equals("Em x meses")){
                 EditText txtInicio = findViewById(R.id.txtMesesInicioPos);

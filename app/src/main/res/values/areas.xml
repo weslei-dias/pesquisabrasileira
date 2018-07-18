@@ -10,7 +10,8 @@
         <item>"Não graduado"</item>
         <item>"Graduação em curso"</item>
         <item>"Quero fazer graduação"</item>
-        <item>"Não respondeu"</item>
+        <item>"Em andamento"</item>
         <item>"Outra"</item>
+        <item>"Não respondeu"</item>
     </string-array>
 </resources>

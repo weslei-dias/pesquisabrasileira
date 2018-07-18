@@ -9,6 +9,7 @@
         <item>"Desempregado"</item>
         <item>"Dona de casa"</item>
         <item>"Funcionário público"</item>
+        <item>"Não sabe"</item>
         <item>"Não respondeu"</item>
     </string-array>
 </resources>

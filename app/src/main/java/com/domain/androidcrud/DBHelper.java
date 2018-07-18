@@ -29,11 +29,13 @@ public class DBHelper extends SQLiteOpenHelper {
             "escolaridade TEXT NOT NULL, " +
             "area_graduacao TEXT NOT NULL, " +
             "opcao_pos TEXT NOT NULL, " +
+            "qual_pos TEXT, " +
             "pretencao_inicio_pos TEXT NOT NULL, " +
             "paticipar_sorteio TEXT NOT NULL, " +
             "sexo TEXT," +
             "inicio_pos TEXT," +
             "outro_local TEXT," +
+            "tempo_conclusao_graduacao TEXT," +
             "outra_area TEXT);";
 
     public DBHelper(Context context) {

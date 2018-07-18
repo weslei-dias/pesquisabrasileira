@@ -73,6 +73,9 @@ public class Cliente {
     @SerializedName("opcaoPos")
     @Expose
     private String opcaoPos;
+    @SerializedName("qualPos")
+    @Expose
+    private String qualPos;
     @SerializedName("pretencaoInicioPos")
     @Expose
     private String pretencaoInicioPos;
@@ -88,6 +91,9 @@ public class Cliente {
     @SerializedName("outraArea")
     @Expose
     private String outraArea;
+    @SerializedName("tempoConclusaoGraduacao")
+    @Expose
+    private String tempoConclusaoGraduacao;
 
     public Cliente()
     {

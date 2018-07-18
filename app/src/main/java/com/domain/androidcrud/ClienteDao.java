@@ -58,15 +58,17 @@ public class ClienteDao {
             String escolaridade = cursor.getString(cursor.getColumnIndex("escolaridade"));
             String areaGraduacao = cursor.getString(cursor.getColumnIndex("area_graduacao"));
             String opcaoPos = cursor.getString(cursor.getColumnIndex("opcao_pos"));
+            String qualPos = cursor.getString(cursor.getColumnIndex("qual_pos"));
             String pretencaoInicioPos = cursor.getString(cursor.getColumnIndex("pretencao_inicio_pos"));
             String paticiparSorteio = cursor.getString(cursor.getColumnIndex("paticipar_sorteio"));
             String inicioPos = cursor.getString(cursor.getColumnIndex("inicio_pos"));
             String outroLocal = cursor.getString(cursor.getColumnIndex("outro_local"));
             String outraArea = cursor.getString(cursor.getColumnIndex("outra_area"));
+            String tempoConclusaoGraduacao = cursor.getString(cursor.getColumnIndex("tempo_conclusao_graduacao"));
             clientes.add(new Cliente(id, dataPesquisa, nomeEntrevistador, unidadeEntrevista, nomeEntrevistado, sexo, cidade, cep,
                     bairro, numero, estado, rua, complemento, telefone, email, idade, localPesquisa,
-                    ocupacao, escolaridade,areaGraduacao, opcaoPos, pretencaoInicioPos, paticiparSorteio,
-                    inicioPos, outroLocal, outraArea));
+                    ocupacao, escolaridade,areaGraduacao, opcaoPos, qualPos, pretencaoInicioPos, paticiparSorteio,
+                    inicioPos, outroLocal, outraArea, tempoConclusaoGraduacao));
         }
         cursor.close();
         return clientes;
@@ -96,16 +98,18 @@ public class ClienteDao {
             String escolaridade = cursor.getString(cursor.getColumnIndex("escolaridade"));
             String areaGraduacao = cursor.getString(cursor.getColumnIndex("area_graduacao"));
             String opcaoPos = cursor.getString(cursor.getColumnIndex("opcao_pos"));
+            String qualPos = cursor.getString(cursor.getColumnIndex("qual_pos"));
             String pretencaoInicioPos = cursor.getString(cursor.getColumnIndex("pretencao_inicio_pos"));
             String paticiparSorteio = cursor.getString(cursor.getColumnIndex("paticipar_sorteio"));
             String inicioPos = cursor.getString(cursor.getColumnIndex("inicio_pos"));
             String outroLocal = cursor.getString(cursor.getColumnIndex("outro_local"));
             String outraArea = cursor.getString(cursor.getColumnIndex("outra_area"));
+            String tempoConclusaoGraduacao = cursor.getString(cursor.getColumnIndex("tempo_conclusao_graduacao"));
             cursor.close();
             return new Cliente(id, dataPesquisa, nomeEntrevistador, unidadeEntrevista, nomeEntrevistado, sexo, cidade, cep,
                     bairro, numero, estado, rua, complemento, telefone, email, idade, localPesquisa,
-                    ocupacao, escolaridade,areaGraduacao, opcaoPos, pretencaoInicioPos, paticiparSorteio,
-                    inicioPos, outroLocal, outraArea);
+                    ocupacao, escolaridade,areaGraduacao, opcaoPos, qualPos, pretencaoInicioPos, paticiparSorteio,
+                    inicioPos, outroLocal, outraArea, tempoConclusaoGraduacao);
         }
 
         return null;
@@ -136,16 +140,18 @@ public class ClienteDao {
             String escolaridade = cursor.getString(cursor.getColumnIndex("escolaridade"));
             String areaGraduacao = cursor.getString(cursor.getColumnIndex("area_graduacao"));
             String opcaoPos = cursor.getString(cursor.getColumnIndex("opcao_pos"));
+            String qualPos = cursor.getString(cursor.getColumnIndex("qual_pos"));
             String pretencaoInicioPos = cursor.getString(cursor.getColumnIndex("pretencao_inicio_pos"));
             String paticiparSorteio = cursor.getString(cursor.getColumnIndex("paticipar_sorteio"));
             String inicioPos = cursor.getString(cursor.getColumnIndex("inicio_pos"));
             String outroLocal = cursor.getString(cursor.getColumnIndex("outro_local"));
             String outraArea = cursor.getString(cursor.getColumnIndex("outra_area"));
+            String tempoConclusaoGraduacao = cursor.getString(cursor.getColumnIndex("tempo_conclusao_graduacao"));
             cursor.close();
             cliente = new Cliente(id, dataPesquisa, nomeEntrevistador, unidadeEntrevista, nomeEntrevistado, sexo, cidade, cep,
                     bairro, numero, estado, rua, complemento, telefone, email, idade, localPesquisa,
-                    ocupacao, escolaridade,areaGraduacao, opcaoPos, pretencaoInicioPos, paticiparSorteio,
-                    inicioPos, outroLocal, outraArea);
+                    ocupacao, escolaridade,areaGraduacao, opcaoPos, qualPos, pretencaoInicioPos, paticiparSorteio,
+                    inicioPos, outroLocal, outraArea, tempoConclusaoGraduacao);
         }
         cursor.close();
         return cliente;
