@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="graduacao">
+        <item>"Selecione ..."</item>
+        <item>"Não gostaria"</item>
+        <item>"Não sou Graduado"</item>
+        <item>"Quero fazer a 1ª graduação"</item>
+        <item>"Quero fazer a 2ª graduação"</item>
+        <item>"Não sabe"</item>
+        <item>"Não respondeu"</item>
+    </string-array>
+</resources>

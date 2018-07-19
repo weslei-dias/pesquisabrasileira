@@ -62,7 +62,9 @@
                     android:layout_height="match_parent"
                     android:layout_gravity="center"
                     android:layout_marginBottom="6dp"
-                    card_view:cardCornerRadius="4dp">
+                    android:elevation="8dp"
+                    card_view:cardCornerRadius="4dp"
+                    card_view:cardElevation="10dp">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -139,6 +141,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/sub_title_2"
                             android:layout_width="match_parent"
@@ -397,6 +400,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="vertical">
+
                         <TextView
                             android:id="@+id/sub_title_questionario"
                             android:layout_width="match_parent"
@@ -619,9 +623,71 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
                                 android:layout_centerVertical="true"
-                                android:hint="Quando pretende iniciar a graduação?"
+                                android:hint="Quanto tempo falta para conclusão?"
                                 android:inputType="text" />
                         </android.support.design.widget.TextInputLayout>
+
+                        <LinearLayout
+                            android:id="@+id/ll_fieldset_graduacao"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="4dp">
+
+                            <TextView
+                                android:id="@+id/txtGraduacao"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="(Q8) - Gostaria de fazer uma 1ª ou 2ª Graduação?"
+                                android:textSize="15sp" />
+
+                            <Spinner
+                                android:id="@+id/spnGostariaGraduacao"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:entries="@array/graduacao"
+                                android:spinnerMode="dialog"
+                                android:textSize="15sp" />
+
+                            <android.support.design.widget.TextInputLayout
+                                android:id="@+id/ll_inicio_prim_graduacao"
+                                android:layout_width="match_parent"
+                                android:layout_height="fill_parent"
+                                android:orientation="horizontal"
+                                android:padding="4dp"
+                                android:visibility="gone">
+
+                                <EditText
+                                    android:id="@+id/txtInicioPrimGraduacao"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:hint="Quero fazer a 1º graduação em"
+                                    android:inputType="text"
+                                    android:textSize="15sp" />
+                            </android.support.design.widget.TextInputLayout>
+
+                            <android.support.design.widget.TextInputLayout
+                                android:id="@+id/ll_inicio_second_graduacao"
+                                android:layout_width="match_parent"
+                                android:layout_height="fill_parent"
+                                android:orientation="horizontal"
+                                android:padding="4dp"
+                                android:visibility="gone">
+
+                                <EditText
+                                    android:id="@+id/txtInicioSegGraduacao"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerHorizontal="true"
+                                    android:layout_centerVertical="true"
+                                    android:hint="Quero fazer a 2ª graduação em"
+                                    android:inputType="text"
+                                    android:textSize="15sp" />
+                            </android.support.design.widget.TextInputLayout>
+                        </LinearLayout>
 
                         <LinearLayout
                             android:id="@+id/ll_fieldset_11"
@@ -635,7 +701,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="2dp"
-                                android:text="(Q8) - Gostaria de fazer uma Pós-Graduação:"
+                                android:text="(Q9) - Gostaria de fazer uma Pós-Graduação:"
                                 android:textSize="15sp" />
 
                             <Spinner
@@ -679,7 +745,7 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_marginTop="2dp"
-                                android:text="(Q9) - Quando pretende iniciar?"
+                                android:text="(Q10) - Quando pretende iniciar?"
                                 android:textSize="15sp" />
 
                             <Spinner

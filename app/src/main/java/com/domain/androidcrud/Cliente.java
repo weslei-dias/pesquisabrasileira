@@ -95,6 +95,16 @@ public class Cliente {
     @Expose
     private String tempoConclusaoGraduacao;
 
+    @SerializedName("desejaGraduacao")
+    @Expose
+    private String desejaGraduacao ;
+    @SerializedName("inicioPrimeiraGraduacao")
+    @Expose
+    private String inicioPrimeiraGraduacao;
+    @SerializedName("inicioSegundaGraduacao")
+    @Expose
+    private String inicioSegundaGraduacao;
+
     public Cliente()
     {
 

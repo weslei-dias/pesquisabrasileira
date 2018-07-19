@@ -165,6 +165,34 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Spinner spinnerGraduacao = findViewById(R.id.spnGostariaGraduacao);
+        spinnerGraduacao.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                String selectedItemText = (String) parent.getItemAtPosition(position);
+
+                TextInputLayout layoutPrimGraduacao = findViewById(R.id.ll_inicio_prim_graduacao);
+                TextInputLayout layoutSegGraduacao = findViewById(R.id.ll_inicio_second_graduacao);
+                if (selectedItemText.equals("Quero fazer a 1ª graduação")){
+                    layoutSegGraduacao.setVisibility(View.GONE);
+                    layoutPrimGraduacao.setVisibility(View.VISIBLE);
+                }else {
+                    layoutPrimGraduacao.setVisibility(View.GONE);
+                }
+                if (selectedItemText.equals("Quero fazer a 2ª graduação")){
+                    layoutPrimGraduacao.setVisibility(View.GONE);
+                    layoutSegGraduacao.setVisibility(View.VISIBLE);
+                }else {
+                    layoutSegGraduacao.setVisibility(View.GONE);
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
+            }
+        });
+
         Spinner spinnerOutraArea = findViewById(R.id.spnAreaGraduacao);
         spinnerOutraArea.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -250,6 +278,7 @@ public class MainActivity extends AppCompatActivity {
                 Spinner spnOpcaoPos = findViewById(R.id.spnGostariaPos);
                 Spinner spnInicioPos = findViewById(R.id.spnInicioPos);
                 Spinner spnParticiparSorteio = findViewById(R.id.spnSorteio);
+                Spinner spnGraduacao = findViewById(R.id.spnGostariaGraduacao);
 
                 String nomeEntrevistador = txtNomeEntrevistador.getText().toString();
                 String unidadeEntrevistador = txtUnidadeEntrevistador.getText().toString();
@@ -297,6 +326,18 @@ public class MainActivity extends AppCompatActivity {
                     inicioPos = txtInicio.getText().toString();
                 }
 
+                String gostariaGraduacao = spnGraduacao.getSelectedItem().toString();
+                String inicioPrimeiraGraduacao = null;
+                String inicioSegundaGraduacao = null;
+                if (gostariaGraduacao.equals("Quero fazer a 1ª graduação")){
+                    EditText txtPrimGrad = findViewById(R.id.txtInicioPrimGraduacao);
+                    inicioPrimeiraGraduacao = txtPrimGrad.getText().toString();
+
+                }else if (gostariaGraduacao.equals("Quero fazer a 2ª graduação")){
+                    EditText txtSegGrad = findViewById(R.id.txtInicioSegGraduacao);
+                    inicioSegundaGraduacao = txtSegGrad.getText().toString();
+                }
+
                 String paticiparSorteio = spnParticiparSorteio.getSelectedItem().toString();
                 String sexo = rgSexo.getCheckedRadioButtonId() == R.id.rbMasculino ? "M" : "F";
 
@@ -304,7 +345,7 @@ public class MainActivity extends AppCompatActivity {
                 boolean isFormValido = validarPreenchimentoCampos(view, nomeEntrevistador, nomeEntrevistado,
                         cep, numero, rua, cidade, telefone, email, estado, idade,
                         localPesquisa, ocupacao, escolaridade, areaGraduacao,
-                        pretencaoInicioPos, paticiparSorteio);
+                        gostariaGraduacao, paticiparSorteio);
 
                 ClienteDao dao = new ClienteDao(getBaseContext());
                 boolean sucesso;
@@ -344,6 +385,9 @@ public class MainActivity extends AppCompatActivity {
                 cv.put("outro_local", outroLocal);
                 cv.put("outra_area", outraArea);
                 cv.put("tempo_conclusao_graduacao", tempoFinalizarGraduacao);
+                cv.put("deseja_graduacao", gostariaGraduacao);
+                cv.put("inicio_primeira_graduacao", inicioPrimeiraGraduacao);
+                cv.put("inicio_segunda_graduacao", inicioSegundaGraduacao);
 
                 if (isFormValido){
                     if (clienteEditado != null){
@@ -386,6 +430,7 @@ public class MainActivity extends AppCompatActivity {
                         spnOpcaoPos.setSelection(0);
                         spnInicioPos.setSelection(0);
                         spnParticiparSorteio.setSelection(0);
+                        spnGraduacao.setSelection(0);
                         Snackbar.make(view, "Pesquisa salva com sucesso", Snackbar.LENGTH_LONG)
                                 .setAction("Action", null).show();
                         findViewById(R.id.includemain).setVisibility(View.VISIBLE);
@@ -406,7 +451,13 @@ public class MainActivity extends AppCompatActivity {
         configurarRecycler();
     }
 
-    private boolean validarPreenchimentoCampos(View view, String nomeEntrevistador, String nomeEntrevistado, String cep, String numero, String rua, String cidade, String telefone, String email, String estado, String idade, String localPesquisa, String ocupacao, String escolaridade, String areaGraduacao, String pretencaoInicioPos, String paticiparSorteio) {
+    private boolean validarPreenchimentoCampos(View view, String nomeEntrevistador,
+                                               String nomeEntrevistado, String cep, String numero,
+                                               String rua, String cidade, String telefone,
+                                               String email, String estado, String idade,
+                                               String localPesquisa, String ocupacao,
+                                               String escolaridade, String areaGraduacao,
+                                               String pretencaoInicioPos, String paticiparSorteio) {
         if (StringUtils.isEmpty(nomeEntrevistador) ||
                 StringUtils.isEmpty(nomeEntrevistado) ||
                 StringUtils.isEmpty(cep) ||
@@ -460,6 +511,7 @@ public class MainActivity extends AppCompatActivity {
             Spinner spnOpcaoPos = findViewById(R.id.spnGostariaPos);
             Spinner spnInicioPos = findViewById(R.id.spnInicioPos);
             Spinner spnParticiparSorteio = findViewById(R.id.spnSorteio);
+            Spinner spnGraduacao = findViewById(R.id.spnGostariaGraduacao);
 
             txtDataPesquisa.setText(clienteEditado.getDataPesquisa());
             txtNomeEntrevistado.setText(clienteEditado.getNomeEntrevistado());
@@ -496,6 +548,17 @@ public class MainActivity extends AppCompatActivity {
             if (spnInicioPos.getSelectedItem().toString().equals("Em x meses")){
                 EditText txtInicio = findViewById(R.id.txtMesesInicioPos);
                 txtInicio.setText(clienteEditado.getInicioPos());
+            }
+
+            spnGraduacao.setSelection(getIndex(spnGraduacao, clienteEditado.getDesejaGraduacao()));
+
+            if (spnGraduacao.getSelectedItem().equals("Quero fazer a 1ª graduação")){
+                EditText txtPrimGrad = findViewById(R.id.txtInicioPrimGraduacao);
+                txtPrimGrad.setText(clienteEditado.getInicioPrimeiraGraduacao());
+
+            }else if (spnGraduacao.getSelectedItem().equals("Quero fazer a 2ª graduação")){
+                EditText txtSegGrad = findViewById(R.id.txtInicioSegGraduacao);
+                txtSegGrad.setText(clienteEditado.getInicioSegundaGraduacao());
             }
             spnParticiparSorteio.setSelection(getIndex(spnParticiparSorteio, clienteEditado.getPaticiparSorteio()));
             if(clienteEditado.getSexo() != null){
