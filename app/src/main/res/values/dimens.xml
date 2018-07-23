@@ -3,6 +3,8 @@
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="width_label">120dp</dimen>
     <dimen name="width_label_item_content">200dp</dimen>
-
+    <dimen name="font_size">18sp</dimen>
+    <dimen name="margin_bottom">10dp</dimen>
+    <dimen name="margin_bottom_layout">10dp</dimen>
 
 </resources>

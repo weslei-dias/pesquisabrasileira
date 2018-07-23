@@ -64,10 +64,10 @@ public class ClienteDao {
             String inicioPos = cursor.getString(cursor.getColumnIndex("inicio_pos"));
             String outroLocal = cursor.getString(cursor.getColumnIndex("outro_local"));
             String outraArea = cursor.getString(cursor.getColumnIndex("outra_area"));
+            String tempoConclusaoGraduacao = cursor.getString(cursor.getColumnIndex("tempo_conclusao_graduacao"));
             String desejaGraduacao = cursor.getString(cursor.getColumnIndex("deseja_graduacao"));
             String inicioPrimeiraGraduacao = cursor.getString(cursor.getColumnIndex("inicio_primeira_graduacao"));
             String inicioSegundaGraduacao = cursor.getString(cursor.getColumnIndex("inicio_segunda_graduacao"));
-            String tempoConclusaoGraduacao = cursor.getString(cursor.getColumnIndex("tempo_conclusao_graduacao"));
 
             clientes.add(new Cliente(id, dataPesquisa, nomeEntrevistador, unidadeEntrevista, nomeEntrevistado, sexo, cidade, cep,
                     bairro, numero, estado, rua, complemento, telefone, email, idade, localPesquisa,

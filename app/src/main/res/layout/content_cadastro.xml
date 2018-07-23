@@ -29,6 +29,7 @@
                     android:layout_width="@dimen/width_label"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
+                    android:textStyle="bold"
                     android:text="Data da pesquisa: "
                     android:textSize="16sp" />
 
@@ -79,9 +80,10 @@
                             android:layout_marginBottom="5dp"
                             android:layout_marginTop="10dp"
                             android:gravity="left"
+                            android:textStyle="bold"
                             android:text="Dados do entrevistador"
                             android:textAppearance="@style/TextAppearance.AppCompat"
-                            android:textSize="14sp" />
+                            android:textSize="16sp" />
 
                         <LinearLayout
                             android:id="@+id/ll_fieldset_entrevistador"
@@ -150,9 +152,10 @@
                             android:layout_marginBottom="5dp"
                             android:layout_marginTop="10dp"
                             android:gravity="left"
+                            android:textStyle="bold"
                             android:text="Dados do entrevistado"
                             android:textAppearance="@style/TextAppearance.AppCompat"
-                            android:textSize="14sp" />
+                            android:textSize="16sp" />
 
                         <LinearLayout
                             android:id="@+id/ll_fieldset_entrevistado"
@@ -409,9 +412,10 @@
                             android:layout_marginBottom="5dp"
                             android:layout_marginTop="10dp"
                             android:gravity="left"
+                            android:textStyle="bold"
                             android:text="Questionário"
                             android:textAppearance="@style/TextAppearance.AppCompat"
-                            android:textSize="14sp" />
+                            android:textSize="16sp" />
 
 
                         <LinearLayout
@@ -419,6 +423,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
+                            android:layout_marginBottom="@dimen/margin_bottom_layout"
                             android:padding="4dp">
 
                             <TextView
@@ -426,7 +431,8 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:text="(Q1) - Sexo:"
-                                android:textSize="15sp" />
+                                android:layout_marginBottom="@dimen/margin_bottom"
+                                android:textSize="@dimen/font_size" />
 
 
                             <RadioGroup
@@ -455,15 +461,16 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
+                            android:layout_marginBottom="@dimen/margin_bottom_layout"
                             android:padding="4dp">
 
                             <TextView
                                 android:id="@+id/txtIdade"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
+                                android:layout_marginBottom="@dimen/margin_bottom"
                                 android:text="(Q2) - Idade:"
-                                android:textSize="15sp" />
+                                android:textSize="@dimen/font_size" />
 
                             <Spinner
                                 android:id="@+id/spnIdade"
@@ -479,6 +486,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
+                            android:layout_marginBottom="@dimen/margin_bottom_layout"
                             android:padding="4dp">
 
                             <TextView
@@ -486,8 +494,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="2dp"
+                                android:layout_marginBottom="@dimen/margin_bottom"
                                 android:text="(Q4) - Local da pesquisa:"
-                                android:textSize="15sp" />
+                                android:textSize="@dimen/font_size" />
 
                             <Spinner
                                 android:id="@+id/spnLocalPesquisa"
@@ -522,6 +531,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
+                            android:layout_marginBottom="@dimen/margin_bottom_layout"
                             android:padding="4dp">
 
                             <TextView
@@ -529,8 +539,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="2dp"
+                                android:layout_marginBottom="@dimen/margin_bottom"
                                 android:text="(Q5) - Ocupação:"
-                                android:textSize="15sp" />
+                                android:textSize="@dimen/font_size" />
 
                             <Spinner
                                 android:id="@+id/spnOcupacao"
@@ -547,6 +558,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
+                            android:layout_marginBottom="@dimen/margin_bottom_layout"
                             android:padding="4dp">
 
                             <TextView
@@ -554,8 +566,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="2dp"
+                                android:layout_marginBottom="@dimen/margin_bottom"
                                 android:text="(Q6) - Escolaridade:"
-                                android:textSize="15sp" />
+                                android:textSize="@dimen/font_size" />
 
                             <Spinner
                                 android:id="@+id/spnEscolaridade"
@@ -573,14 +586,16 @@
                             android:layout_height="match_parent"
                             android:layout_marginTop="2dp"
                             android:orientation="vertical"
+                            android:layout_marginBottom="@dimen/margin_bottom_layout"
                             android:padding="4dp">
 
                             <TextView
                                 android:id="@+id/txtArea"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+                                android:layout_marginBottom="@dimen/margin_bottom"
                                 android:text="(Q7) - Área de Graduação:"
-                                android:textSize="15sp" />
+                                android:textSize="@dimen/font_size" />
 
                             <Spinner
                                 android:id="@+id/spnAreaGraduacao"
@@ -623,6 +638,7 @@
                                 android:layout_height="wrap_content"
                                 android:layout_centerHorizontal="true"
                                 android:layout_centerVertical="true"
+                                android:layout_marginBottom="6dp"
                                 android:hint="Quanto tempo falta para conclusão?"
                                 android:inputType="text" />
                         </android.support.design.widget.TextInputLayout>
@@ -632,6 +648,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
+                            android:layout_marginBottom="@dimen/margin_bottom_layout"
                             android:padding="4dp">
 
                             <TextView
@@ -639,8 +656,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="2dp"
+                                android:layout_marginBottom="@dimen/margin_bottom"
                                 android:text="(Q8) - Gostaria de fazer uma 1ª ou 2ª Graduação?"
-                                android:textSize="15sp" />
+                                android:textSize="@dimen/font_size" />
 
                             <Spinner
                                 android:id="@+id/spnGostariaGraduacao"
@@ -664,6 +682,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_centerHorizontal="true"
                                     android:layout_centerVertical="true"
+                                    android:layout_marginBottom="6dp"
                                     android:hint="Quero fazer a 1º graduação em"
                                     android:inputType="text"
                                     android:textSize="15sp" />
@@ -683,6 +702,7 @@
                                     android:layout_height="wrap_content"
                                     android:layout_centerHorizontal="true"
                                     android:layout_centerVertical="true"
+                                    android:layout_marginBottom="6dp"
                                     android:hint="Quero fazer a 2ª graduação em"
                                     android:inputType="text"
                                     android:textSize="15sp" />
@@ -694,6 +714,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
+                            android:layout_marginBottom="@dimen/margin_bottom_layout"
                             android:padding="4dp">
 
                             <TextView
@@ -701,8 +722,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="2dp"
+                                android:layout_marginBottom="@dimen/margin_bottom"
                                 android:text="(Q9) - Gostaria de fazer uma Pós-Graduação:"
-                                android:textSize="15sp" />
+                                android:textSize="@dimen/font_size" />
 
                             <Spinner
                                 android:id="@+id/spnGostariaPos"
@@ -738,6 +760,7 @@
                             android:layout_height="fill_parent"
                             android:orientation="vertical"
                             android:padding="4dp"
+                            android:layout_marginBottom="@dimen/margin_bottom_layout"
                             android:visibility="gone">
 
                             <TextView
@@ -745,8 +768,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_marginTop="2dp"
+                                android:layout_marginBottom="@dimen/margin_bottom"
                                 android:text="(Q10) - Quando pretende iniciar?"
-                                android:textSize="15sp" />
+                                android:textSize="@dimen/font_size" />
 
                             <Spinner
                                 android:id="@+id/spnInicioPos"
@@ -781,6 +805,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
+                            android:layout_marginBottom="@dimen/margin_bottom_layout"
                             android:padding="4dp">
 
                             <TextView
@@ -788,8 +813,9 @@
                                 android:layout_width="wrap_content"
                                 android:layout_height="match_parent"
                                 android:layout_marginTop="2dp"
+                                android:layout_marginBottom="@dimen/margin_bottom"
                                 android:text="Quer participar do sorteio dos cursos de pós graduação ou de extenção gratuitos?"
-                                android:textSize="15sp" />
+                                android:textSize="@dimen/font_size" />
 
                             <Spinner
                                 android:id="@+id/spnSorteio"
@@ -797,7 +823,8 @@
                                 android:layout_height="match_parent"
                                 android:entries="@array/participarSorteio"
                                 android:spinnerMode="dialog"
-                                android:textSize="15sp" />
+                                android:textSize="15sp"
+                                android:layout_marginBottom="@dimen/margin_bottom"/>
                         </LinearLayout>
                     </LinearLayout>
                 </android.support.v7.widget.CardView>
