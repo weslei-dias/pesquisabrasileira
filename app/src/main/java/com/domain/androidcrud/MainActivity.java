@@ -2,6 +2,7 @@ package com.domain.androidcrud;
 
 import android.content.ContentValues;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -28,6 +29,13 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.basgeekball.awesomevalidation.ValidationHolder;
+import com.basgeekball.awesomevalidation.ValidationStyle;
+import com.basgeekball.awesomevalidation.utility.custom.CustomErrorReset;
+import com.basgeekball.awesomevalidation.utility.custom.CustomValidation;
+import com.basgeekball.awesomevalidation.utility.custom.CustomValidationCallback;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -58,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
     private Util util;
     private ProgressBar progressBar;
     private APIService mAPIService;
+    private AwesomeValidation awesomeValidation;
 
 
     @Override
@@ -67,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
 
         etZipCode = (EditText) findViewById(R.id.txtZipCode);
         etZipCode.addTextChangedListener( new ZipCodeListener(this) );
+
+        awesomeValidation = ValidadorCampos.validarCamposObrigatorios(this);
 
         SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
         String retorno="";
@@ -458,6 +469,7 @@ public class MainActivity extends AppCompatActivity {
                                                String localPesquisa, String ocupacao,
                                                String escolaridade, String areaGraduacao,
                                                String pretencaoInicioPos, String paticiparSorteio) {
+        awesomeValidation.validate();
         if (StringUtils.isEmpty(nomeEntrevistador) ||
                 StringUtils.isEmpty(nomeEntrevistado) ||
                 StringUtils.isEmpty(cep) ||

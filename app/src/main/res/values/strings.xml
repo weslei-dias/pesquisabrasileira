@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">POPBê</string>
+    <string name="campo_obrigatorio">Campo obrigatório</string>
 </resources>
