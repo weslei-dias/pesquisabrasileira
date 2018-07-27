@@ -105,6 +105,13 @@ public class Cliente {
     @Expose
     private String inicioSegundaGraduacao;
 
+    private Boolean gerouProspect;
+
+    private String numeroProspect;
+
+    private Integer statusProspect;
+
+
     public Cliente()
     {
 

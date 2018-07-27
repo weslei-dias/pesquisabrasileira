@@ -28,6 +28,24 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintRight_toLeftOf="@+id/btnEdit"
         />
+
+        <TextView
+            android:id="@+id/gerou_prospect"
+            android:layout_width="@dimen/width_label_item_content"
+            android:layout_height="wrap_content"
+            android:text="Gerou prospect"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintRight_toLeftOf="@+id/btnEdit"
+            />
+        <TextView
+            android:id="@+id/num_prospect"
+            android:visibility="gone"
+            android:layout_width="@dimen/width_label_item_content"
+            android:layout_height="wrap_content"
+            android:text="Número da propoect"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintRight_toLeftOf="@+id/btnEdit"
+            />
     </LinearLayout>
 
     <android.support.design.widget.FloatingActionButton

@@ -10,6 +10,8 @@ public class ClienteHolder extends RecyclerView.ViewHolder {
 
     public TextView nomeCliente;
     public TextView dataPesquisa;
+    public TextView gerouProspect;
+    public TextView numeroProspect;
     public ImageButton btnEditar;
     public ImageButton btnExcluir;
 
@@ -17,6 +19,8 @@ public class ClienteHolder extends RecyclerView.ViewHolder {
         super(itemView);
         nomeCliente = (TextView) itemView.findViewById(R.id.nomeCliente);
         dataPesquisa = (TextView) itemView.findViewById(R.id.dataPesquisa);
+        gerouProspect = itemView.findViewById(R.id.gerou_prospect);
+        numeroProspect = itemView.findViewById(R.id.num_prospect);
         btnEditar = (ImageButton) itemView.findViewById(R.id.btnEdit);
         btnExcluir = (ImageButton) itemView.findViewById(R.id.btnDelete);
     }

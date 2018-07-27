@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "Crud.db";
-    private static final int DATABASE_VERSION = 3;
+    private static final int DATABASE_VERSION = 4;
     private final String CREATE_TABLE = "CREATE TABLE " +
             "popbe (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "data_pesquisa TEXT NOT NULL," +
@@ -39,7 +39,11 @@ public class DBHelper extends SQLiteOpenHelper {
             "tempo_conclusao_graduacao TEXT," +
             "inicio_primeira_graduacao TEXT," +
             "inicio_segunda_graduacao TEXT," +
-            "outra_area TEXT);";
+            "outra_area TEXT," +
+            "gerou_prospect INTEGER," +
+            "numero_prospect TEXT," +
+            "status_prospect INTEGER" +
+            ");";
 
     public DBHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

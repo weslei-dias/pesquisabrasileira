@@ -37,6 +37,13 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteHolder> {
     public void onBindViewHolder(@NonNull final ClienteHolder clienteHolder, final int i) {
         clienteHolder.nomeCliente.setText(clientes.get(i).getNomeEntrevistado());
         clienteHolder.dataPesquisa.setText(clientes.get(i).getDataPesquisa());
+        clienteHolder.gerouProspect.setText(
+                clientes.get(i).getGerouProspect() ? "Gerou Propospect : Sim" : "Gerou Propospect : Não");
+        if (clientes.get(i).getGerouProspect()){
+            clienteHolder.numeroProspect.setVisibility(View.VISIBLE);
+            clienteHolder.numeroProspect.setText("Número da prospect: " +
+                    clientes.get(i).getNumeroProspect());
+        }
         clienteHolder.btnEditar.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {

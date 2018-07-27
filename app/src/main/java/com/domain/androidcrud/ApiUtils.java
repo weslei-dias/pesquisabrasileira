@@ -4,7 +4,7 @@ public class ApiUtils {
 
     private ApiUtils() {}
 
-    public static final String BASE_URL = "http://192.168.0.14:8080/popbe/";
+    public static final String BASE_URL = "http://80b2192c.ngrok.io/popbe/";
 
     public static APIService getAPIService() {
 

@@ -4,15 +4,11 @@ import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
 import android.support.v4.app.NavUtils;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.DividerItemDecoration;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -339,14 +335,14 @@ public class CadastroActivity extends AppCompatActivity{
                         localPesquisa, ocupacao, escolaridade, areaGraduacao,
                         gostariaGraduacao, paticiparSorteio);
 
-                ClienteDao dao = new ClienteDao(getBaseContext());
+                final ClienteDao dao = new ClienteDao(getBaseContext());
                 boolean sucesso;
 
                 SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy HH:mm");
                 String dataAtual="";
                 Calendar hoje = Calendar.getInstance();
                 dataAtual = formatoData.format(hoje.getTime());
-                ContentValues cv = new ContentValues();
+                final ContentValues cv = new ContentValues();
                 cv.put("data_pesquisa", dataAtual);
                 cv.put("nome_entrevistador", nomeEntrevistador);
                 cv.put("unidade_entrevista", unidadeEntrevistador);
@@ -399,11 +395,35 @@ public class CadastroActivity extends AppCompatActivity{
                                 .subscribe(new Subscriber<Cliente>() {
                                     @Override
                                     public void onCompleted() {
+
+                                    }
+
+                                    @Override
+                                    public void onError(Throwable e) {
+                                        pd.hide();
+                                        Snackbar.make(view, "Erro ao salvar a pesquisa! Verifique o preenchimento " +
+                                                "de todos os campo e tente novamente!", Snackbar.LENGTH_LONG)
+                                                .setAction("Action", null).show();
+                                    }
+
+                                    @Override
+                                    public void onNext(Cliente pesquisa) {
+                                        if (pesquisa.getOpcaoPos().equals("Sim gostaria")){
+                                            pd.setTitle("Gerando prospect ...");
+                                        }
+
+                                        cv.clear();
+                                        cv.put("gerou_prospect", pesquisa.getGerouProspect() ? 1 : 0);
+                                        if (pesquisa.getGerouProspect()){
+                                            cv.put("numero_prospect", pesquisa.getNumeroProspect());
+                                        }
+                                       dao.salvar(cliente.getId(), cv);
+
                                         if (clienteEditado != null){
-                                            clienteAdapter.atualizarCliente(cliente);
+                                            clienteAdapter.atualizarCliente(pesquisa);
                                             clienteEditado = null;
                                         }else {
-                                            clienteAdapter.adicionarCliente(cliente);
+                                            clienteAdapter.adicionarCliente(pesquisa);
                                         }
 
 
@@ -436,18 +456,6 @@ public class CadastroActivity extends AppCompatActivity{
                                                 MainActivity.class);
                                         startActivity(intent);
                                         finish();
-                                    }
-
-                                    @Override
-                                    public void onError(Throwable e) {
-                                        Snackbar.make(view, "Erro ao salvar a pesquisa! Verifique o preenchimento " +
-                                                "de todos os campo e tente novamente!", Snackbar.LENGTH_LONG)
-                                                .setAction("Action", null).show();
-                                    }
-
-                                    @Override
-                                    public void onNext(Cliente post) {
-                                        showResponse(post.toString());
                                     }
                                 });
 

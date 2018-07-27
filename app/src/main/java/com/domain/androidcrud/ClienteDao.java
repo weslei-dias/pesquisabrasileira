@@ -8,27 +8,27 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClienteDao {
-    private final String TABLE_CLIENTES = "popbe";
+    private final String TABLEPOPBE = "popbe";
     private DbGateway gw;
 
     public ClienteDao(Context ctx) {
         gw = DbGateway.getInstance(ctx);
     }
 
-    public boolean excluir(int id){
-        return gw.getDb().delete(TABLE_CLIENTES, "id=?", new String[]{ id + "" }) > 0;
+    public boolean excluir(int id) {
+        return gw.getDb().delete(TABLEPOPBE, "id=?", new String[]{id + ""}) > 0;
     }
 
     public boolean salvar(ContentValues cv) {
         return salvar(0, cv);
     }
 
-        public boolean salvar(int id, ContentValues cv) {
-        if (id > 0){
-            return gw.getDb().update(TABLE_CLIENTES, cv, "id=?",
+    public boolean salvar(int id, ContentValues cv) {
+        if (id > 0) {
+            return gw.getDb().update(TABLEPOPBE, cv, "id=?",
                     new String[]{id + ""}) > 0;
-        }else {
-            return gw.getDb().insert(TABLE_CLIENTES, null, cv) > 0;
+        } else {
+            return gw.getDb().insert(TABLEPOPBE, null, cv) > 0;
         }
     }
 
@@ -36,7 +36,7 @@ public class ClienteDao {
         List<Cliente> clientes = new ArrayList<>();
         Cursor cursor = gw.getDb()
                 .rawQuery("Select * from popbe order by data_pesquisa desc", null);
-        while(cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             int id = cursor.getInt(cursor.getColumnIndex("id"));
             String dataPesquisa = cursor.getString(cursor.getColumnIndex("data_pesquisa"));
             String nomeEntrevistador = cursor.getString(cursor.getColumnIndex("nome_entrevistador"));
@@ -69,18 +69,25 @@ public class ClienteDao {
             String inicioPrimeiraGraduacao = cursor.getString(cursor.getColumnIndex("inicio_primeira_graduacao"));
             String inicioSegundaGraduacao = cursor.getString(cursor.getColumnIndex("inicio_segunda_graduacao"));
 
+            String isProspect = cursor.getString(cursor.getColumnIndex("gerou_prospect"));
+            Boolean gerouProspect = isProspect != null && Integer.valueOf(isProspect) == 1;
+            String numeroProspect = cursor.getString(cursor.getColumnIndex("numero_prospect"));
+            String status = cursor.getString(cursor.getColumnIndex("status_prospect"));
+            Integer statusProspect = status != null ? Integer.valueOf(status) : null;
+
             clientes.add(new Cliente(id, dataPesquisa, nomeEntrevistador, unidadeEntrevista, nomeEntrevistado, sexo, cidade, cep,
                     bairro, numero, estado, rua, complemento, telefone, email, idade, localPesquisa,
-                    ocupacao, escolaridade,areaGraduacao, opcaoPos, qualPos, pretencaoInicioPos, paticiparSorteio,
-                    inicioPos, outroLocal, outraArea, tempoConclusaoGraduacao, desejaGraduacao, inicioPrimeiraGraduacao, inicioSegundaGraduacao));
+                    ocupacao, escolaridade, areaGraduacao, opcaoPos, qualPos, pretencaoInicioPos, paticiparSorteio,
+                    inicioPos, outroLocal, outraArea, tempoConclusaoGraduacao, desejaGraduacao,
+                    inicioPrimeiraGraduacao, inicioSegundaGraduacao, gerouProspect, numeroProspect, statusProspect));
         }
         cursor.close();
         return clientes;
     }
 
-    public Cliente retornarUltimo(){
+    public Cliente retornarUltimo() {
         Cursor cursor = gw.getDb().rawQuery("SELECT * FROM popbe ORDER BY ID DESC", null);
-        if(cursor.moveToFirst()){
+        if (cursor.moveToFirst()) {
             int id = cursor.getInt(cursor.getColumnIndex("id"));
             String dataPesquisa = cursor.getString(cursor.getColumnIndex("data_pesquisa"));
             String nomeEntrevistador = cursor.getString(cursor.getColumnIndex("nome_entrevistador"));
@@ -112,21 +119,28 @@ public class ClienteDao {
             String desejaGraduacao = cursor.getString(cursor.getColumnIndex("deseja_graduacao"));
             String inicioPrimeiraGraduacao = cursor.getString(cursor.getColumnIndex("inicio_primeira_graduacao"));
             String inicioSegundaGraduacao = cursor.getString(cursor.getColumnIndex("inicio_segunda_graduacao"));
+
+            String isProspect = cursor.getString(cursor.getColumnIndex("gerou_prospect"));
+            Boolean gerouProspect = isProspect != null && Integer.valueOf(isProspect) == 1;
+            String numeroProspect = cursor.getString(cursor.getColumnIndex("numero_prospect"));
+            String status = cursor.getString(cursor.getColumnIndex("status_prospect"));
+            Integer statusProspect = status != null ? Integer.valueOf(status) : null;
             cursor.close();
             return new Cliente(id, dataPesquisa, nomeEntrevistador, unidadeEntrevista, nomeEntrevistado, sexo, cidade, cep,
                     bairro, numero, estado, rua, complemento, telefone, email, idade, localPesquisa,
-                    ocupacao, escolaridade,areaGraduacao, opcaoPos, qualPos, pretencaoInicioPos, paticiparSorteio,
-                    inicioPos, outroLocal, outraArea, tempoConclusaoGraduacao, desejaGraduacao, inicioPrimeiraGraduacao, inicioSegundaGraduacao);
+                    ocupacao, escolaridade, areaGraduacao, opcaoPos, qualPos, pretencaoInicioPos, paticiparSorteio,
+                    inicioPos, outroLocal, outraArea, tempoConclusaoGraduacao, desejaGraduacao,
+                    inicioPrimeiraGraduacao, inicioSegundaGraduacao, gerouProspect, numeroProspect, statusProspect);
         }
 
         return null;
     }
 
-    public Cliente getCliente(int id){
+    public Cliente getCliente(int id) {
         Cursor cursor = gw.getDb().rawQuery("SELECT * FROM popbe where id=" + id,
                 null);
         Cliente cliente = null;
-        while(cursor.moveToNext()){
+        while (cursor.moveToNext()) {
             String dataPesquisa = cursor.getString(cursor.getColumnIndex("data_pesquisa"));
             String nomeEntrevistador = cursor.getString(cursor.getColumnIndex("nome_entrevistador"));
             String unidadeEntrevista = cursor.getString(cursor.getColumnIndex("unidade_entrevista"));
@@ -157,11 +171,18 @@ public class ClienteDao {
             String desejaGraduacao = cursor.getString(cursor.getColumnIndex("deseja_graduacao"));
             String inicioPrimeiraGraduacao = cursor.getString(cursor.getColumnIndex("inicio_primeira_graduacao"));
             String inicioSegundaGraduacao = cursor.getString(cursor.getColumnIndex("inicio_segunda_graduacao"));
+
+            String isProspect = cursor.getString(cursor.getColumnIndex("gerou_prospect"));
+            Boolean gerouProspect = isProspect != null && Integer.valueOf(isProspect) == 1;
+            String numeroProspect = cursor.getString(cursor.getColumnIndex("numero_prospect"));
+            String status = cursor.getString(cursor.getColumnIndex("status_prospect"));
+            Integer statusProspect = status != null ? Integer.valueOf(status) : null;
             cursor.close();
             cliente = new Cliente(id, dataPesquisa, nomeEntrevistador, unidadeEntrevista, nomeEntrevistado, sexo, cidade, cep,
                     bairro, numero, estado, rua, complemento, telefone, email, idade, localPesquisa,
-                    ocupacao, escolaridade,areaGraduacao, opcaoPos, qualPos, pretencaoInicioPos, paticiparSorteio,
-                    inicioPos, outroLocal, outraArea, tempoConclusaoGraduacao, desejaGraduacao, inicioPrimeiraGraduacao, inicioSegundaGraduacao);
+                    ocupacao, escolaridade, areaGraduacao, opcaoPos, qualPos, pretencaoInicioPos, paticiparSorteio,
+                    inicioPos, outroLocal, outraArea, tempoConclusaoGraduacao, desejaGraduacao,
+                    inicioPrimeiraGraduacao, inicioSegundaGraduacao, gerouProspect, numeroProspect, statusProspect);
         }
         cursor.close();
         return cliente;
