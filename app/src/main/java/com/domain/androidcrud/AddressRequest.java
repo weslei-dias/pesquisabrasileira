@@ -1,16 +1,15 @@
 package com.domain.androidcrud;
 
 import android.os.AsyncTask;
-import android.support.design.widget.Snackbar;
 
 import com.google.gson.Gson;
 
 import java.lang.ref.WeakReference;
 
 public class AddressRequest extends AsyncTask<Void, Void, Endereco> {
-    private WeakReference<MainActivity> activity;
+    private WeakReference<CadastroActivity> activity;
 
-    public AddressRequest( MainActivity activity ){
+    public AddressRequest( CadastroActivity activity ){
         this.activity = new WeakReference<>( activity );
     }
 

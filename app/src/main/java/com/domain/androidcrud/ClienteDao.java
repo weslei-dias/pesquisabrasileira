@@ -35,7 +35,7 @@ public class ClienteDao {
     public List<Cliente> getTodosClientes() {
         List<Cliente> clientes = new ArrayList<>();
         Cursor cursor = gw.getDb()
-                .rawQuery("Select * from popbe", null);
+                .rawQuery("Select * from popbe order by data_pesquisa desc", null);
         while(cursor.moveToNext()){
             int id = cursor.getInt(cursor.getColumnIndex("id"));
             String dataPesquisa = cursor.getString(cursor.getColumnIndex("data_pesquisa"));

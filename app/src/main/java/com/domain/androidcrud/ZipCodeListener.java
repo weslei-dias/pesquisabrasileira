@@ -16,7 +16,7 @@ public class ZipCodeListener implements TextWatcher {
         String zipCode = editable.toString();
 
         if( zipCode.length() == 8 ){
-            new AddressRequest( (MainActivity) context ).execute();
+            new AddressRequest( (CadastroActivity) context ).execute();
         }
     }
 

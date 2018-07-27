@@ -40,13 +40,14 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteHolder> {
         clienteHolder.btnEditar.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Activity activity = getActivity(v);
-                Intent intent = activity.getIntent();
+                Intent intent = new Intent(v.getContext(),
+                        CadastroActivity.class);
+
                 Cliente cliente = clientes.get(i);
                 intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 intent.putExtra("cliente", cliente.getId());
-                activity.finish();
-                activity.startActivity(intent);
+                v.getContext().startActivity(intent);
+
             }
         });
 
@@ -117,7 +118,7 @@ public class ClienteAdapter extends RecyclerView.Adapter<ClienteHolder> {
         Context context = view.getContext();
         while (context instanceof ContextWrapper) {
             if (context instanceof Activity) {
-                return (Activity)context;
+                return (CadastroActivity)context;
             }
             context = ((ContextWrapper)context).getBaseContext();
         }
