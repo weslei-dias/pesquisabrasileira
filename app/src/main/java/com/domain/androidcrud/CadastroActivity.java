@@ -23,6 +23,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+import java.util.concurrent.*;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 
@@ -32,6 +33,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
@@ -391,6 +393,7 @@ public class CadastroActivity extends AppCompatActivity{
                         pd.show();
 
                         mAPIService.savePost(cliente).subscribeOn(Schedulers.io())
+                                .takeUntil(Observable.timer(30, TimeUnit.SECONDS))
                                 .observeOn(AndroidSchedulers.mainThread())
                                 .subscribe(new Subscriber<Cliente>() {
                                     @Override
@@ -401,8 +404,8 @@ public class CadastroActivity extends AppCompatActivity{
                                     @Override
                                     public void onError(Throwable e) {
                                         pd.hide();
-                                        Snackbar.make(view, "Erro ao salvar a pesquisa! Verifique o preenchimento " +
-                                                "de todos os campo e tente novamente!", Snackbar.LENGTH_LONG)
+                                        Snackbar.make(view, "Erro ao salvar a pesquisa!" + e.getMessage()
+                                                , Snackbar.LENGTH_LONG)
                                                 .setAction("Action", null).show();
                                     }
 
