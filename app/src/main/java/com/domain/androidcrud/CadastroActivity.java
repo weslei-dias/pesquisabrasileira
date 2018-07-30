@@ -404,7 +404,7 @@ public class CadastroActivity extends AppCompatActivity{
                                     @Override
                                     public void onError(Throwable e) {
                                         pd.hide();
-                                        Snackbar.make(view, "Erro ao salvar a pesquisa!" + e.getMessage()
+                                        Snackbar.make(view, "Erro ao salvar a pesquisa! " + e.getMessage()
                                                 , Snackbar.LENGTH_LONG)
                                                 .setAction("Action", null).show();
                                     }
