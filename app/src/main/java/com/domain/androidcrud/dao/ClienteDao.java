@@ -1,8 +1,11 @@
-package com.domain.androidcrud;
+package com.domain.androidcrud.dao;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
+
+import com.domain.androidcrud.db.DbGateway;
+import com.domain.androidcrud.model.Cliente;
 
 import java.util.ArrayList;
 import java.util.List;

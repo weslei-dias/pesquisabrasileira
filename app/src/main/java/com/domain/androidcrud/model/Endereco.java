@@ -1,4 +1,4 @@
-package com.domain.androidcrud;
+package com.domain.androidcrud.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

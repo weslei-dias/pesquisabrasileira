@@ -1,4 +1,4 @@
-package com.domain.androidcrud;
+package com.domain.androidcrud.request;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedReader;

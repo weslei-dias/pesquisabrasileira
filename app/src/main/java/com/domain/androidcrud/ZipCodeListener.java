@@ -4,6 +4,9 @@ import android.content.Context;
 import android.text.Editable;
 import android.text.TextWatcher;
 
+import com.domain.androidcrud.activity.CadastroActivity;
+import com.domain.androidcrud.request.AddressRequest;
+
 public class ZipCodeListener implements TextWatcher {
     private Context context;
 

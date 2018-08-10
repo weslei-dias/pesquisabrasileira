@@ -1,7 +1,10 @@
-package com.domain.androidcrud;
+package com.domain.androidcrud.request;
 
 import android.os.AsyncTask;
 
+import com.domain.androidcrud.activity.CadastroActivity;
+import com.domain.androidcrud.model.Endereco;
+import com.domain.androidcrud.request.JsonRequest;
 import com.google.gson.Gson;
 
 import java.lang.ref.WeakReference;

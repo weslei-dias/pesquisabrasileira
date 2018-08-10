@@ -1,4 +1,4 @@
-package com.domain.androidcrud;
+package com.domain.androidcrud.db;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;

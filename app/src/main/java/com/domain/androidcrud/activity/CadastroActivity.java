@@ -1,4 +1,4 @@
-package com.domain.androidcrud;
+package com.domain.androidcrud.activity;
 
 import android.app.ProgressDialog;
 import android.content.ContentValues;
@@ -26,6 +26,16 @@ import android.widget.TextView;
 import java.util.concurrent.*;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.domain.androidcrud.request.APIService;
+import com.domain.androidcrud.request.ApiUtils;
+import com.domain.androidcrud.ClienteAdapter;
+import com.domain.androidcrud.dao.ClienteDao;
+import com.domain.androidcrud.R;
+import com.domain.androidcrud.Util;
+import com.domain.androidcrud.ValidadorCampos;
+import com.domain.androidcrud.ZipCodeListener;
+import com.domain.androidcrud.model.Cliente;
+import com.domain.androidcrud.model.Endereco;
 
 import org.apache.commons.lang3.StringUtils;
 

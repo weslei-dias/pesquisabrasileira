@@ -1,4 +1,4 @@
-package com.domain.androidcrud;
+package com.domain.androidcrud.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

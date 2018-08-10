@@ -1,4 +1,4 @@
-package com.domain.androidcrud;
+package com.domain.androidcrud.request;
 
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
