@@ -23,6 +23,7 @@ import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.TextView;
+
 import java.util.concurrent.*;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
@@ -48,7 +49,7 @@ import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
-public class CadastroActivity extends AppCompatActivity{
+public class CadastroActivity extends AppCompatActivity {
 
     private EditText etZipCode;
     private Util util;
@@ -70,17 +71,17 @@ public class CadastroActivity extends AppCompatActivity{
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new  Intent(getApplicationContext(),MainActivity.class));
+                startActivity(new Intent(getApplicationContext(), MainActivity.class));
             }
         });
 
         etZipCode = (EditText) findViewById(R.id.txtZipCode);
-        etZipCode.addTextChangedListener( new ZipCodeListener(this) );
+        etZipCode.addTextChangedListener(new ZipCodeListener(this));
 
         awesomeValidation = ValidadorCampos.validarCamposObrigatorios(this);
 
         SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy");
-        String retorno="";
+        String retorno = "";
         Calendar hoje = Calendar.getInstance();
         retorno = formatoData.format(hoje.getTime());
         TextView fieldDate = (TextView) findViewById(R.id.txtDataPesquisa);
@@ -117,20 +118,13 @@ public class CadastroActivity extends AppCompatActivity{
 
                 TextInputLayout layoutOutro = findViewById(R.id.ll_pos_realizada);
                 LinearLayout layoutIniciarPos = findViewById(R.id.ll_inicio_pos);
-                if (selectedItemText.equals("Já fiz")){
+                if (selectedItemText.equals("Sim gostaria")) {
                     layoutOutro.setVisibility(View.VISIBLE);
-                    layoutIniciarPos.setVisibility(View.GONE);
-                }else {
-                    layoutOutro.setVisibility(View.GONE);
-                }
-
-                if (selectedItemText.equals("Sim gostaria")){
                     layoutIniciarPos.setVisibility(View.VISIBLE);
+                } else {
                     layoutOutro.setVisibility(View.GONE);
-                }else {
                     layoutIniciarPos.setVisibility(View.GONE);
                 }
-
             }
 
             @Override
@@ -146,9 +140,9 @@ public class CadastroActivity extends AppCompatActivity{
                 String selectedItemText = (String) parent.getItemAtPosition(position);
 
                 TextInputLayout layoutOutro = findViewById(R.id.ll_outroLocal);
-                if (selectedItemText.equals("Outro")){
+                if (selectedItemText.equals("Outro")) {
                     layoutOutro.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     layoutOutro.setVisibility(View.GONE);
                 }
 
@@ -168,16 +162,16 @@ public class CadastroActivity extends AppCompatActivity{
 
                 TextInputLayout layoutPrimGraduacao = findViewById(R.id.ll_inicio_prim_graduacao);
                 TextInputLayout layoutSegGraduacao = findViewById(R.id.ll_inicio_second_graduacao);
-                if (selectedItemText.equals("Quero fazer a 1ª graduação")){
+                if (selectedItemText.equals("Quero fazer a 1ª graduação")) {
                     layoutSegGraduacao.setVisibility(View.GONE);
                     layoutPrimGraduacao.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     layoutPrimGraduacao.setVisibility(View.GONE);
                 }
-                if (selectedItemText.equals("Quero fazer a 2ª graduação")){
+                if (selectedItemText.equals("Quero fazer a 2ª graduação")) {
                     layoutPrimGraduacao.setVisibility(View.GONE);
                     layoutSegGraduacao.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     layoutSegGraduacao.setVisibility(View.GONE);
                 }
             }
@@ -196,16 +190,16 @@ public class CadastroActivity extends AppCompatActivity{
 
                 TextInputLayout layoutOutro = findViewById(R.id.ll_outraArea);
                 TextInputLayout layoutFinalGraduacao = findViewById(R.id.ll_final_graduacao);
-                if (selectedItemText.equals("Outra")){
+                if (selectedItemText.equals("Outra")) {
                     layoutFinalGraduacao.setVisibility(View.GONE);
                     layoutOutro.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     layoutOutro.setVisibility(View.GONE);
                 }
-                if (selectedItemText.equals("Em andamento")){
+                if (selectedItemText.equals("Em andamento")) {
                     layoutOutro.setVisibility(View.GONE);
                     layoutFinalGraduacao.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     layoutFinalGraduacao.setVisibility(View.GONE);
                 }
             }
@@ -222,9 +216,9 @@ public class CadastroActivity extends AppCompatActivity{
                 String selectedItemText = (String) parent.getItemAtPosition(position);
 
                 TextInputLayout layoutOutro = findViewById(R.id.ll_mesesInicioPos);
-                if (selectedItemText.equals("Em x meses")){
+                if (selectedItemText.equals("Em x meses")) {
                     layoutOutro.setVisibility(View.VISIBLE);
-                }else {
+                } else {
                     layoutOutro.setVisibility(View.GONE);
                 }
             }
@@ -235,7 +229,7 @@ public class CadastroActivity extends AppCompatActivity{
             }
         });
 
-        Button btnCancelar = (Button)findViewById(R.id.btnCancelar);
+        Button btnCancelar = (Button) findViewById(R.id.btnCancelar);
         btnCancelar.setOnClickListener(new Button.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -250,7 +244,7 @@ public class CadastroActivity extends AppCompatActivity{
         pd.setTitle("Salvando...");
         pd.setMessage("Aguarde um momento");
         pd.setCancelable(true);
-        Button btnSalvar = (Button)findViewById(R.id.btnSalvar);
+        Button btnSalvar = (Button) findViewById(R.id.btnSalvar);
         btnSalvar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(final View view) {
@@ -295,7 +289,7 @@ public class CadastroActivity extends AppCompatActivity{
                 String idade = spnIdade.getSelectedItem().toString();
                 String localPesquisa = spnLocalPesquisa.getSelectedItem().toString();
                 String outroLocal = null;
-                if (localPesquisa.equals("Outro")){
+                if (localPesquisa.equals("Outro")) {
                     EditText txtOutroLocal = findViewById(R.id.txtOutroLocal);
                     outroLocal = txtOutroLocal.getText().toString();
                 }
@@ -303,25 +297,25 @@ public class CadastroActivity extends AppCompatActivity{
                 String escolaridade = spnEscolaridade.getSelectedItem().toString();
                 String areaGraduacao = spnArea.getSelectedItem().toString();
                 String outraArea = null;
-                if (areaGraduacao.equals("Outra")){
+                if (areaGraduacao.equals("Outra")) {
                     EditText txtOutraArea = findViewById(R.id.txtOutroArea);
                     outraArea = txtOutraArea.getText().toString();
                 }
 
                 String tempoFinalizarGraduacao = null;
-                if (areaGraduacao.equals("Em andamento")){
+                if (areaGraduacao.equals("Em andamento")) {
                     EditText txtFinalGraduacao = findViewById(R.id.txtFinalGraduacao);
                     tempoFinalizarGraduacao = txtFinalGraduacao.getText().toString();
                 }
                 String opcaoPos = spnOpcaoPos.getSelectedItem().toString();
                 String qualPos = null;
-                if(opcaoPos.equals("Já fiz")){
+                if (opcaoPos.equals("Sim gostaria")) {
                     EditText txtQualPos = findViewById(R.id.txtQualPos);
                     qualPos = txtQualPos.getText().toString();
                 }
                 String pretencaoInicioPos = spnInicioPos.getSelectedItem().toString();
                 String inicioPos = null;
-                if (pretencaoInicioPos.equals("Em x meses")){
+                if (pretencaoInicioPos.equals("Em x meses")) {
                     EditText txtInicio = findViewById(R.id.txtMesesInicioPos);
                     inicioPos = txtInicio.getText().toString();
                 }
@@ -329,11 +323,11 @@ public class CadastroActivity extends AppCompatActivity{
                 String gostariaGraduacao = spnGraduacao.getSelectedItem().toString();
                 String inicioPrimeiraGraduacao = null;
                 String inicioSegundaGraduacao = null;
-                if (gostariaGraduacao.equals("Quero fazer a 1ª graduação")){
+                if (gostariaGraduacao.equals("Quero fazer a 1ª graduação")) {
                     EditText txtPrimGrad = findViewById(R.id.txtInicioPrimGraduacao);
                     inicioPrimeiraGraduacao = txtPrimGrad.getText().toString();
 
-                }else if (gostariaGraduacao.equals("Quero fazer a 2ª graduação")){
+                } else if (gostariaGraduacao.equals("Quero fazer a 2ª graduação")) {
                     EditText txtSegGrad = findViewById(R.id.txtInicioSegGraduacao);
                     inicioSegundaGraduacao = txtSegGrad.getText().toString();
                 }
@@ -351,11 +345,13 @@ public class CadastroActivity extends AppCompatActivity{
                 boolean sucesso;
 
                 SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy HH:mm");
-                String dataAtual="";
+                String dataAtual = "";
                 Calendar hoje = Calendar.getInstance();
                 dataAtual = formatoData.format(hoje.getTime());
                 final ContentValues cv = new ContentValues();
-                cv.put("data_pesquisa", dataAtual);
+                if (clienteEditado == null){
+                    cv.put("data_pesquisa", dataAtual);
+                }
                 cv.put("nome_entrevistador", nomeEntrevistador);
                 cv.put("unidade_entrevista", unidadeEntrevistador);
                 cv.put("nome_entrevistado", nomeEntrevistado);
@@ -368,8 +364,8 @@ public class CadastroActivity extends AppCompatActivity{
                 cv.put("rua", rua);
                 cv.put("complemento", complemento);
                 cv.put("telefone", telefone
-                        .replace(")","")
-                        .replace("-","")
+                        .replace(")", "")
+                        .replace("-", "")
                         .replace(" ", ""));
                 cv.put("email", email);
                 cv.put("idade", idade);
@@ -389,102 +385,156 @@ public class CadastroActivity extends AppCompatActivity{
                 cv.put("inicio_primeira_graduacao", inicioPrimeiraGraduacao);
                 cv.put("inicio_segunda_graduacao", inicioSegundaGraduacao);
 
-                if (isFormValido){
-                    if (clienteEditado != null){
-                        sucesso = dao.salvar(clienteEditado.getId(), cv);
-                    }else {
-                        sucesso = dao.salvar(cv);
-                    }
+                if (isFormValido) {
 
-                    if (sucesso){
-                        final Cliente cliente = dao.retornarUltimo();
+                    Cliente clienteIgual = dao.getClienteComMesmoEmail(cv.getAsString("email"),
+                            cv.getAsString("nome_entrevistado"));
 
-
-                        pd.show();
-
-                        mAPIService.savePost(cliente).subscribeOn(Schedulers.io())
-                                .takeUntil(Observable.timer(30, TimeUnit.SECONDS))
-                                .observeOn(AndroidSchedulers.mainThread())
-                                .subscribe(new Subscriber<Cliente>() {
-                                    @Override
-                                    public void onCompleted() {
-
-                                    }
-
-                                    @Override
-                                    public void onError(Throwable e) {
-                                        pd.hide();
-                                        Snackbar.make(view, "Erro ao salvar a pesquisa!" + e.getMessage()
-                                                , Snackbar.LENGTH_LONG)
-                                                .setAction("Action", null).show();
-                                    }
-
-                                    @Override
-                                    public void onNext(Cliente pesquisa) {
-                                        if (pesquisa.getOpcaoPos().equals("Sim gostaria")){
-                                            pd.setTitle("Gerando prospect ...");
-                                        }
-
-                                        cv.clear();
-                                        cv.put("gerou_prospect", pesquisa.getGerouProspect() ? 1 : 0);
-                                        if (pesquisa.getGerouProspect()){
-                                            cv.put("numero_prospect", pesquisa.getNumeroProspect());
-                                        }
-                                       dao.salvar(cliente.getId(), cv);
-
-                                        if (clienteEditado != null){
-                                            clienteAdapter.atualizarCliente(pesquisa);
-                                            clienteEditado = null;
-                                        }else {
-                                            clienteAdapter.adicionarCliente(pesquisa);
-                                        }
+                        if (clienteEditado != null) {
+                            salvarPesquisaEdicao(view, txtNomeEntrevistador,
+                                    txtUnidadeEntrevistador, txtNomeEntrevistado,
+                                    txtCep, txtRua, txtComplemento, txtNumero, txtBairro,
+                                    txtCidade, spnEstado, txtTelefone, txtEmail, rgSexo,
+                                    spnIdade, spnLocalPesquisa, spnOcupacao, spnEscolaridade,
+                                    spnArea, spnOpcaoPos, spnInicioPos, spnParticiparSorteio,
+                                    spnGraduacao, dao, cv, pd);
+                        } else {
+                            if (clienteIgual != null){
+                                StringBuilder msgClienteIgual = new StringBuilder();
+                                msgClienteIgual.append("Já existe uma pesquisa para este entrevistado.");
+                                if (clienteIgual.getNumeroProspect() != null){
+                                    msgClienteIgual.append("Prospect de número: " + clienteIgual.getNumeroProspect());
+                                }
+                                msgClienteIgual.append("Verifique o nome e o email do entrevistador e tente novamente");
+                                Snackbar.make(view, msgClienteIgual.toString() , Snackbar.LENGTH_LONG)
+                                        .setDuration(5000)
+                                        .setAction("Action", null).show();
+                            }else {
+                                sucesso = dao.salvar(cv);
+                                eviarPesquisaParaGeracaoProspect(view,
+                                        txtNomeEntrevistador, txtUnidadeEntrevistador, txtNomeEntrevistado,
+                                        txtCep, txtRua, txtComplemento, txtNumero, txtBairro, txtCidade,
+                                        spnEstado, txtTelefone, txtEmail, rgSexo, spnIdade, spnLocalPesquisa,
+                                        spnOcupacao, spnEscolaridade, spnArea, spnOpcaoPos, spnInicioPos,
+                                        spnParticiparSorteio, spnGraduacao, dao, sucesso, cv, pd);
+                            }
+                        }
 
 
-                                        txtNomeEntrevistado.setText("");
-                                        txtUnidadeEntrevistador.setText("");
-                                        txtNomeEntrevistador.setText("");
-                                        txtCep.setText("");
-                                        txtRua.setText("");
-                                        txtComplemento.setText("");
-                                        txtNumero.setText("");
-                                        txtBairro.setText("");
-                                        txtCidade.setText("");
-                                        txtTelefone.setText("");
-                                        txtEmail.setText("");
-                                        rgSexo.setSelected(false);
-                                        spnEstado.setSelection(0);
-                                        spnIdade.setSelection(0);
-                                        spnLocalPesquisa.setSelection(0);
-                                        spnOcupacao.setSelection(0);
-                                        spnEscolaridade.setSelection(0);
-                                        spnArea.setSelection(0);
-                                        spnOpcaoPos.setSelection(0);
-                                        spnInicioPos.setSelection(0);
-                                        spnParticiparSorteio.setSelection(0);
-                                        spnGraduacao.setSelection(0);
-                                        pd.hide();
-                                        Snackbar.make(view, "Pesquisa salva com sucesso", Snackbar.LENGTH_LONG)
-                                                .setAction("Action", null).show();
-                                        Intent intent = new Intent(CadastroActivity.this,
-                                                MainActivity.class);
-                                        startActivity(intent);
-                                        finish();
-                                    }
-                                });
-
-                    }else {
-                        Snackbar.make(view, "Erro ao salvar a pesquisa! Verifique o preenchimento " +
-                                "de todos os campo e tente novamente!", Snackbar.LENGTH_LONG)
-                                .setAction("Action", null).show();
-                    }
-                }else{
+                } else {
                     Snackbar.make(view, "Existem campos não preenchidos. Verifique e tente novamente.", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                 }
             }
         });
+    }
 
-        //configurarRecycler();
+    private void salvarPesquisaEdicao(View view, EditText txtNomeEntrevistador, EditText txtUnidadeEntrevistador, EditText txtNomeEntrevistado, EditText txtCep, EditText txtRua, EditText txtComplemento, EditText txtNumero, EditText txtBairro, EditText txtCidade, Spinner spnEstado, EditText txtTelefone, EditText txtEmail, RadioGroup rgSexo, Spinner spnIdade, Spinner spnLocalPesquisa, Spinner spnOcupacao, Spinner spnEscolaridade, Spinner spnArea, Spinner spnOpcaoPos, Spinner spnInicioPos, Spinner spnParticiparSorteio, Spinner spnGraduacao, ClienteDao dao, ContentValues cv, ProgressDialog pd) {
+        boolean sucesso;
+        sucesso = dao.salvar(clienteEditado.getId(), cv);
+        eviarPesquisaParaGeracaoProspect(view,
+                txtNomeEntrevistador, txtUnidadeEntrevistador, txtNomeEntrevistado,
+                txtCep, txtRua, txtComplemento, txtNumero, txtBairro, txtCidade,
+                spnEstado, txtTelefone, txtEmail, rgSexo, spnIdade, spnLocalPesquisa,
+                spnOcupacao, spnEscolaridade, spnArea, spnOpcaoPos, spnInicioPos,
+                spnParticiparSorteio, spnGraduacao, dao, sucesso, cv, pd);
+    }
+
+    private void eviarPesquisaParaGeracaoProspect(final View view, final EditText txtNomeEntrevistador,
+                                                  final EditText txtUnidadeEntrevistador,
+                                                  final EditText txtNomeEntrevistado,
+                                                  final EditText txtCep, final EditText txtRua,
+                                                  final EditText txtComplemento, final EditText txtNumero,
+                                                  final EditText txtBairro, final EditText txtCidade,
+                                                  final Spinner spnEstado, final EditText txtTelefone,
+                                                  final EditText txtEmail, final RadioGroup rgSexo,
+                                                  final Spinner spnIdade, final Spinner spnLocalPesquisa,
+                                                  final Spinner spnOcupacao, final Spinner spnEscolaridade,
+                                                  final Spinner spnArea, final Spinner spnOpcaoPos,
+                                                  final Spinner spnInicioPos, final Spinner spnParticiparSorteio,
+                                                  final Spinner spnGraduacao, final ClienteDao dao, boolean sucesso,
+                                                  final ContentValues cv, final ProgressDialog pd) {
+        if (sucesso) {
+            final Cliente cliente = dao.retornarUltimo();
+
+
+            pd.show();
+
+            mAPIService.savePost(cliente).subscribeOn(Schedulers.io())
+                    .takeUntil(Observable.timer(30, TimeUnit.SECONDS))
+                    .observeOn(AndroidSchedulers.mainThread())
+                    .subscribe(new Subscriber<Cliente>() {
+                        @Override
+                        public void onCompleted() {
+
+                        }
+
+                        @Override
+                        public void onError(Throwable e) {
+                            pd.hide();
+                            Snackbar.make(view, "Erro ao salvar a pesquisa! " + e.getMessage()
+                                    , Snackbar.LENGTH_LONG)
+                                    .setAction("Action", null).show();
+                        }
+
+                        @Override
+                        public void onNext(Cliente pesquisa) {
+                            if (pesquisa.getOpcaoPos().equals("Sim gostaria")) {
+                                pd.setTitle("Gerando prospect ...");
+                            }
+
+                            cv.clear();
+                            cv.put("gerou_prospect", pesquisa.getGerouProspect() ? 1 : 0);
+                            if (pesquisa.getGerouProspect()) {
+                                cv.put("numero_prospect", pesquisa.getNumeroProspect());
+                            }
+                            dao.salvar(cliente.getId(), cv);
+
+                            if (clienteEditado != null) {
+                                clienteAdapter.atualizarCliente(pesquisa);
+                                clienteEditado = null;
+                            } else {
+                                clienteAdapter.adicionarCliente(pesquisa);
+                            }
+
+
+                            txtNomeEntrevistado.setText("");
+                            txtUnidadeEntrevistador.setText("");
+                            txtNomeEntrevistador.setText("");
+                            txtCep.setText("");
+                            txtRua.setText("");
+                            txtComplemento.setText("");
+                            txtNumero.setText("");
+                            txtBairro.setText("");
+                            txtCidade.setText("");
+                            txtTelefone.setText("");
+                            txtEmail.setText("");
+                            rgSexo.setSelected(false);
+                            spnEstado.setSelection(0);
+                            spnIdade.setSelection(0);
+                            spnLocalPesquisa.setSelection(0);
+                            spnOcupacao.setSelection(0);
+                            spnEscolaridade.setSelection(0);
+                            spnArea.setSelection(0);
+                            spnOpcaoPos.setSelection(0);
+                            spnInicioPos.setSelection(0);
+                            spnParticiparSorteio.setSelection(0);
+                            spnGraduacao.setSelection(0);
+                            pd.hide();
+                            Snackbar.make(view, "Pesquisa salva com sucesso", Snackbar.LENGTH_LONG)
+                                    .setAction("Action", null).show();
+                            Intent intent = new Intent(CadastroActivity.this,
+                                    MainActivity.class);
+                            startActivity(intent);
+                            finish();
+                        }
+                    });
+
+        } else {
+            Snackbar.make(view, "Erro ao salvar a pesquisa! Verifique o preenchimento " +
+                    "de todos os campo e tente novamente!", Snackbar.LENGTH_LONG)
+                    .setAction("Action", null).show();
+        }
     }
 
     private boolean validarPreenchimentoCampos(View view, String nomeEntrevistador,
@@ -518,7 +568,7 @@ public class CadastroActivity extends AppCompatActivity{
 
 
     private void preencherDadosSeEdicao(Intent intent) {
-        if(intent.hasExtra("cliente")){
+        if (intent.hasExtra("cliente")) {
             Integer idCliente = (Integer) intent.getSerializableExtra("cliente");
             clienteEditado = new ClienteDao(this).getCliente(idCliente);
             TextView txtDataPesquisa = findViewById(R.id.txtDataPesquisa);
@@ -562,46 +612,45 @@ public class CadastroActivity extends AppCompatActivity{
             spnEstado.setSelection(getIndex(spnEstado, clienteEditado.getEstado()));
             spnIdade.setSelection(getIndex(spnIdade, clienteEditado.getIdade()));
             spnLocalPesquisa.setSelection(getIndex(spnLocalPesquisa, clienteEditado.getLocalPesquisa()));
-            if (spnLocalPesquisa.getSelectedItem().toString().equals("Outro")){
+            if (spnLocalPesquisa.getSelectedItem().toString().equals("Outro")) {
                 EditText txtOutroLocal = findViewById(R.id.txtOutroLocal);
                 txtOutroLocal.setText(clienteEditado.getOutroLocal());
             }
             spnOcupacao.setSelection(getIndex(spnOcupacao, clienteEditado.getOcupacao()));
             spnEscolaridade.setSelection(getIndex(spnEscolaridade, clienteEditado.getEscolaridade()));
             spnArea.setSelection(getIndex(spnArea, clienteEditado.getAreaGraduacao()));
-            if (spnArea.getSelectedItem().toString().equals("Outra")){
+            if (spnArea.getSelectedItem().toString().equals("Outra")) {
                 EditText txtOutraArea = findViewById(R.id.txtOutroArea);
                 txtOutraArea.setText(clienteEditado.getOutraArea());
             }
             spnOpcaoPos.setSelection(getIndex(spnOpcaoPos, clienteEditado.getOpcaoPos()));
-            if (spnOpcaoPos.getSelectedItem().toString().equals("Já fiz")){
+            if (spnOpcaoPos.getSelectedItem().toString().equals("Sim gostaria")) {
                 EditText txtQualPos = findViewById(R.id.txtQualPos);
                 txtQualPos.setText(clienteEditado.getQualPos());
             }
             spnInicioPos.setSelection(getIndex(spnInicioPos, clienteEditado.getPretencaoInicioPos()));
-            if (spnInicioPos.getSelectedItem().toString().equals("Em x meses")){
+            if (spnInicioPos.getSelectedItem().toString().equals("Em x meses")) {
                 EditText txtInicio = findViewById(R.id.txtMesesInicioPos);
                 txtInicio.setText(clienteEditado.getInicioPos());
             }
 
             spnGraduacao.setSelection(getIndex(spnGraduacao, clienteEditado.getDesejaGraduacao()));
 
-            if (spnGraduacao.getSelectedItem().equals("Quero fazer a 1ª graduação")){
+            if (spnGraduacao.getSelectedItem().equals("Quero fazer a 1ª graduação")) {
                 EditText txtPrimGrad = findViewById(R.id.txtInicioPrimGraduacao);
                 txtPrimGrad.setText(clienteEditado.getInicioPrimeiraGraduacao());
 
-            }else if (spnGraduacao.getSelectedItem().equals("Quero fazer a 2ª graduação")){
+            } else if (spnGraduacao.getSelectedItem().equals("Quero fazer a 2ª graduação")) {
                 EditText txtSegGrad = findViewById(R.id.txtInicioSegGraduacao);
                 txtSegGrad.setText(clienteEditado.getInicioSegundaGraduacao());
             }
             spnParticiparSorteio.setSelection(getIndex(spnParticiparSorteio, clienteEditado.getPaticiparSorteio()));
-            if(clienteEditado.getSexo() != null){
+            if (clienteEditado.getSexo() != null) {
                 RadioButton rb;
-                if(clienteEditado.getSexo().equals("M")) {
+                if (clienteEditado.getSexo().equals("M")) {
                     rb = (RadioButton) findViewById(R.id.rbMasculino);
                     rb.setChecked(true);
-                }
-                else {
+                } else {
                     rb = (RadioButton) findViewById(R.id.rbFeminino);
                     rb.setChecked(true);
                 }
@@ -613,39 +662,39 @@ public class CadastroActivity extends AppCompatActivity{
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if( requestCode == Endereco.REQUEST_ZIP_CODE_CODE
-                && resultCode == RESULT_OK ){
+        if (requestCode == Endereco.REQUEST_ZIP_CODE_CODE
+                && resultCode == RESULT_OK) {
 
-            etZipCode.setText( data.getStringExtra( Endereco.ZIP_CODE_KEY ) );
+            etZipCode.setText(data.getStringExtra(Endereco.ZIP_CODE_KEY));
         }
     }
 
-    private String getZipCode(){
+    private String getZipCode() {
         return etZipCode.getText().toString();
     }
 
-    public String getUriRequest(){
-        return "https://viacep.com.br/ws/"+getZipCode()+"/json/";
+    public String getUriRequest() {
+        return "https://viacep.com.br/ws/" + getZipCode() + "/json/";
     }
 
-    public void lockFields( boolean isToLock ){
-        util.lockFields( isToLock );
+    public void lockFields(boolean isToLock) {
+        util.lockFields(isToLock);
     }
 
 
-    public void searchZipCode( View view ){
-        Intent intent = new Intent( this, MainActivity.class );
+    public void searchZipCode(View view) {
+        Intent intent = new Intent(this, MainActivity.class);
         startActivityForResult(intent, Endereco.REQUEST_ZIP_CODE_CODE);
     }
 
-    public void setAddressFields( Endereco address){
-        setField( R.id.et_street, address.getLogradouro() );
+    public void setAddressFields(Endereco address) {
+        setField(R.id.et_street, address.getLogradouro());
 //        setField( R.id.et_complement, address.getComplemento() );
-        setField( R.id.et_neighbor, address.getBairro() );
-        setField( R.id.et_city, address.getLocalidade() );
-        setSpinner( R.id.sp_state, R.array.estados, address.getUf());
+        setField(R.id.et_neighbor, address.getBairro());
+        setField(R.id.et_city, address.getLocalidade());
+        setSpinner(R.id.sp_state, R.array.estados, address.getUf());
 
-        if (address == null){
+        if (address == null) {
             Snackbar.make(getCurrentFocus(),
                     "Não foi possível recuperar o cep informado", Snackbar.LENGTH_LONG)
                     .setAction("Action", null).show();
@@ -653,17 +702,17 @@ public class CadastroActivity extends AppCompatActivity{
 
     }
 
-    private void setField( int fieldId, String data ){
-        ((EditText) findViewById( fieldId )).setText( data );
+    private void setField(int fieldId, String data) {
+        ((EditText) findViewById(fieldId)).setText(data);
     }
 
-    private void setSpinner( int fieldId, int arrayId, String uf ){
-        Spinner spinner = (Spinner) findViewById( fieldId );
+    private void setSpinner(int fieldId, int arrayId, String uf) {
+        Spinner spinner = (Spinner) findViewById(fieldId);
         String[] states = getResources().getStringArray(arrayId);
 
-        for( int i = 0; i < states.length; i++ ){
-            if( states[i].endsWith("("+uf+")") ){
-                spinner.setSelection( i );
+        for (int i = 0; i < states.length; i++) {
+            if (states[i].endsWith("(" + uf + ")")) {
+                spinner.setSelection(i);
                 break;
             }
         }
@@ -688,22 +737,17 @@ public class CadastroActivity extends AppCompatActivity{
 
     }
 
-
     private Cliente clienteEditado = null;
-    private int getIndex(Spinner spinner, String myString){
+
+    private int getIndex(Spinner spinner, String myString) {
         int index = 0;
-        for (int i=0; i< spinner.getCount(); i++){
+        for (int i = 0; i < spinner.getCount(); i++) {
             if (spinner.getItemAtPosition(i).toString()
-                    .equalsIgnoreCase(myString)){
+                    .equalsIgnoreCase(myString)) {
                 index = i;
                 break;
             }
         }
         return index;
-    }
-
-
-    public void showResponse(String response) {
-        System.out.println(response);
     }
 }

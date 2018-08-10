@@ -35,6 +35,27 @@ public class ClienteDao {
         }
     }
 
+    public Cliente getClienteComMesmoEmail(String email, String nome)
+    {
+        Cursor cursor = gw.getDb().rawQuery("SELECT * FROM popbe where email='" + email +
+                "' and nome_entrevistado='" + nome + "'",null);
+        Cliente cliente = null;
+
+        while (cursor.moveToNext()) {
+            String isProspect = cursor.getString(cursor.getColumnIndex("gerou_prospect"));
+            Boolean gerouProspect = isProspect != null && Integer.valueOf(isProspect) == 1;
+            String numeroProspect = cursor.getString(cursor.getColumnIndex("numero_prospect"));
+
+            cliente = new Cliente();
+            if (gerouProspect){
+                cliente.setNumeroProspect(numeroProspect);
+            }
+        }
+        cursor.close();
+
+        return cliente;
+    }
+
     public List<Cliente> getTodosClientes() {
         List<Cliente> clientes = new ArrayList<>();
         Cursor cursor = gw.getDb()
