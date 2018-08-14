@@ -32,12 +32,13 @@
         <android.support.design.widget.TextInputLayout
             android:id="@+id/til_username"
             android:layout_width="match_parent"
+            android:gravity="center"
             android:layout_height="wrap_content"
             android:layout_weight="1">
 
             <EditText
                 android:id="@+id/txtUsername"
-                android:layout_width="match_parent"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
@@ -50,17 +51,18 @@
             android:id="@+id/til_password"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:layout_weight="1">
 
             <EditText
-                android:id="@+id/txPassword"
-                android:layout_width="match_parent"
+                android:id="@+id/txtPassword"
+                android:layout_width="250dp"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
                 android:layout_centerVertical="true"
                 android:ems="10"
                 android:hint="Password"
-                android:inputType="text" />
+                android:inputType="textPassword" />
         </android.support.design.widget.TextInputLayout>
         <Button
             android:id="@+id/btnEntrar"
