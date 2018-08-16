@@ -20,12 +20,7 @@ public class ValidadorCampos {
     public static AwesomeValidation validarCamposObrigatorios(Activity activity)
     {
         AwesomeValidation awesomeValidation = new AwesomeValidation(ValidationStyle.BASIC);
-
-        awesomeValidation.addValidation(activity, R.id.txtNomeEntrevistador,
-                NOT_EMPTY, R.string.campo_obrigatorio);
         awesomeValidation.addValidation(activity, R.id.txtNomeEntrevistado,
-                NOT_EMPTY, R.string.campo_obrigatorio);
-        awesomeValidation.addValidation(activity, R.id.txtUnidadeEntrevistador,
                 NOT_EMPTY, R.string.campo_obrigatorio);
         awesomeValidation.addValidation(activity, R.id.txtEmail,
                 Patterns.EMAIL_ADDRESS, R.string.campo_obrigatorio);

@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ClienteDao {
-    private final String TABLEPOPBE = "popbe";
+    private final String PESQUISA = "pesquisa";
     private DbGateway gw;
 
     public ClienteDao(Context ctx) {
@@ -19,7 +19,7 @@ public class ClienteDao {
     }
 
     public boolean excluir(int id) {
-        return gw.getDb().delete(TABLEPOPBE, "id=?", new String[]{id + ""}) > 0;
+        return gw.getDb().delete(PESQUISA, "id=?", new String[]{id + ""}) > 0;
     }
 
     public boolean salvar(ContentValues cv) {
@@ -28,16 +28,16 @@ public class ClienteDao {
 
     public boolean salvar(int id, ContentValues cv) {
         if (id > 0) {
-            return gw.getDb().update(TABLEPOPBE, cv, "id=?",
+            return gw.getDb().update(PESQUISA, cv, "id=?",
                     new String[]{id + ""}) > 0;
         } else {
-            return gw.getDb().insert(TABLEPOPBE, null, cv) > 0;
+            return gw.getDb().insert(PESQUISA, null, cv) > 0;
         }
     }
 
     public Cliente getClienteComMesmoEmail(String email, String nome)
     {
-        Cursor cursor = gw.getDb().rawQuery("SELECT * FROM popbe where email='" + email +
+        Cursor cursor = gw.getDb().rawQuery("SELECT * FROM pesquisa where email='" + email +
                 "' and nome_entrevistado='" + nome + "'",null);
         Cliente cliente = null;
 
@@ -59,7 +59,7 @@ public class ClienteDao {
     public List<Cliente> getTodosClientes() {
         List<Cliente> clientes = new ArrayList<>();
         Cursor cursor = gw.getDb()
-                .rawQuery("Select * from popbe order by data_pesquisa desc", null);
+                .rawQuery("Select * from pesquisa order by data_pesquisa desc", null);
         while (cursor.moveToNext()) {
             int id = cursor.getInt(cursor.getColumnIndex("id"));
             String dataPesquisa = cursor.getString(cursor.getColumnIndex("data_pesquisa"));
@@ -110,7 +110,7 @@ public class ClienteDao {
     }
 
     public Cliente retornarUltimo() {
-        Cursor cursor = gw.getDb().rawQuery("SELECT * FROM popbe ORDER BY ID DESC", null);
+        Cursor cursor = gw.getDb().rawQuery("SELECT * FROM pesquisa ORDER BY ID DESC", null);
         if (cursor.moveToFirst()) {
             int id = cursor.getInt(cursor.getColumnIndex("id"));
             String dataPesquisa = cursor.getString(cursor.getColumnIndex("data_pesquisa"));
@@ -161,7 +161,7 @@ public class ClienteDao {
     }
 
     public Cliente getCliente(int id) {
-        Cursor cursor = gw.getDb().rawQuery("SELECT * FROM popbe where id=" + id,
+        Cursor cursor = gw.getDb().rawQuery("SELECT * FROM pesquisa where id=" + id,
                 null);
         Cliente cliente = null;
         while (cursor.moveToNext()) {

@@ -4,7 +4,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="com.domain.androidcrud.activity.CadastroActivity">
 
 
@@ -70,79 +69,79 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
-                    android:id="@+id/card_view_dados_entrevistador"
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:layout_gravity="center"
-                    android:layout_marginBottom="6dp"
-                    android:elevation="8dp"
-                    card_view:cardCornerRadius="4dp"
-                    card_view:cardElevation="10dp">
+                <!--<android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"-->
+                    <!--android:id="@+id/card_view_dados_entrevistador"-->
+                    <!--android:layout_width="match_parent"-->
+                    <!--android:layout_height="match_parent"-->
+                    <!--android:layout_gravity="center"-->
+                    <!--android:layout_marginBottom="6dp"-->
+                    <!--android:elevation="8dp"-->
+                    <!--card_view:cardCornerRadius="4dp"-->
+                    <!--card_view:cardElevation="10dp">-->
 
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="vertical">
+                    <!--<LinearLayout-->
+                        <!--android:layout_width="match_parent"-->
+                        <!--android:layout_height="wrap_content"-->
+                        <!--android:orientation="vertical">-->
 
-                        <TextView
-                            android:id="@+id/sub_title_entrevistador"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_below="@+id/iv_profile"
-                            android:layout_marginBottom="5dp"
-                            android:layout_marginTop="10dp"
-                            android:gravity="left"
-                            android:textStyle="bold"
-                            android:text="Dados do entrevistador"
-                            android:textAppearance="@style/TextAppearance.AppCompat"
-                            android:textSize="16sp" />
+                        <!--<TextView-->
+                            <!--android:id="@+id/sub_title_entrevistador"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:layout_below="@+id/iv_profile"-->
+                            <!--android:layout_marginBottom="5dp"-->
+                            <!--android:layout_marginTop="10dp"-->
+                            <!--android:gravity="left"-->
+                            <!--android:textStyle="bold"-->
+                            <!--android:text="Dados do entrevistador"-->
+                            <!--android:textAppearance="@style/TextAppearance.AppCompat"-->
+                            <!--android:textSize="16sp" />-->
 
-                        <LinearLayout
-                            android:id="@+id/ll_fieldset_entrevistador"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="4dp">
+                        <!--<LinearLayout-->
+                            <!--android:id="@+id/ll_fieldset_entrevistador"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:orientation="vertical"-->
+                            <!--android:padding="4dp">-->
 
-                            <android.support.design.widget.TextInputLayout
-                                android:id="@+id/til_enrevistador"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1">
+                            <!--<android.support.design.widget.TextInputLayout-->
+                                <!--android:id="@+id/til_enrevistador"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight="1">-->
 
-                                <android.support.design.widget.TextInputEditText
-                                    android:id="@+id/txtNomeEntrevistador"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="Nome do entrevistador" />
-                            </android.support.design.widget.TextInputLayout>
+                                <!--<android.support.design.widget.TextInputEditText-->
+                                    <!--android:id="@+id/txtNomeEntrevistador"-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:hint="Nome do entrevistador" />-->
+                            <!--</android.support.design.widget.TextInputLayout>-->
 
-                        </LinearLayout>
+                        <!--</LinearLayout>-->
 
-                        <LinearLayout
-                            android:id="@+id/ll_fieldset_unidade"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:orientation="vertical"
-                            android:padding="4dp">
+                        <!--<LinearLayout-->
+                            <!--android:id="@+id/ll_fieldset_unidade"-->
+                            <!--android:layout_width="match_parent"-->
+                            <!--android:layout_height="wrap_content"-->
+                            <!--android:orientation="vertical"-->
+                            <!--android:padding="4dp">-->
 
-                            <android.support.design.widget.TextInputLayout
-                                android:id="@+id/til_unidade"
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_weight="1">
+                            <!--<android.support.design.widget.TextInputLayout-->
+                                <!--android:id="@+id/til_unidade"-->
+                                <!--android:layout_width="match_parent"-->
+                                <!--android:layout_height="wrap_content"-->
+                                <!--android:layout_weight="1">-->
 
-                                <android.support.design.widget.TextInputEditText
-                                    android:id="@+id/txtUnidadeEntrevistador"
-                                    android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
-                                    android:hint="Unidade entrevistador" />
-                            </android.support.design.widget.TextInputLayout>
+                                <!--<android.support.design.widget.TextInputEditText-->
+                                    <!--android:id="@+id/txtUnidadeEntrevistador"-->
+                                    <!--android:layout_width="match_parent"-->
+                                    <!--android:layout_height="wrap_content"-->
+                                    <!--android:hint="Unidade entrevistador" />-->
+                            <!--</android.support.design.widget.TextInputLayout>-->
 
-                        </LinearLayout>
-                    </LinearLayout>
-                </android.support.v7.widget.CardView>
+                        <!--</LinearLayout>-->
+                    <!--</LinearLayout>-->
+                <!--</android.support.v7.widget.CardView>-->
 
                 <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
                     android:id="@+id/card_view"
@@ -827,7 +826,7 @@
                                 android:layout_height="match_parent"
                                 android:layout_marginTop="2dp"
                                 android:layout_marginBottom="@dimen/margin_bottom"
-                                android:text="Quer participar do sorteio dos cursos de pós graduação ou de extenção gratuitos?"
+                                android:text="(Q11) - Quer participar do sorteio dos cursos de pós graduação ou de extenção gratuitos?"
                                 android:textSize="@dimen/font_size" />
 
                             <Spinner

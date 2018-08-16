@@ -3,7 +3,9 @@ package com.domain.androidcrud.activity;
 import android.app.ProgressDialog;
 import android.content.ContentValues;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TextInputEditText;
 import android.support.design.widget.TextInputLayout;
@@ -27,6 +29,8 @@ import android.widget.TextView;
 import java.util.concurrent.*;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
+import com.domain.androidcrud.dao.UserDao;
+import com.domain.androidcrud.model.User;
 import com.domain.androidcrud.request.APIService;
 import com.domain.androidcrud.request.ApiUtils;
 import com.domain.androidcrud.ClienteAdapter;
@@ -57,6 +61,7 @@ public class CadastroActivity extends AppCompatActivity {
     private APIService mAPIService;
     private AwesomeValidation awesomeValidation;
     private ClienteAdapter clienteAdapter;
+    private  User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -249,8 +254,6 @@ public class CadastroActivity extends AppCompatActivity {
             @Override
             public void onClick(final View view) {
 
-                final EditText txtNomeEntrevistador = findViewById(R.id.txtNomeEntrevistador);
-                final EditText txtUnidadeEntrevistador = findViewById(R.id.txtUnidadeEntrevistador);
                 final EditText txtNomeEntrevistado = findViewById(R.id.txtNomeEntrevistado);
                 final EditText txtCep = findViewById(R.id.txtZipCode);
                 final EditText txtRua = findViewById(R.id.et_street);
@@ -274,8 +277,6 @@ public class CadastroActivity extends AppCompatActivity {
                 final Spinner spnParticiparSorteio = findViewById(R.id.spnSorteio);
                 final Spinner spnGraduacao = findViewById(R.id.spnGostariaGraduacao);
 
-                String nomeEntrevistador = txtNomeEntrevistador.getText().toString();
-                String unidadeEntrevistador = txtUnidadeEntrevistador.getText().toString();
                 String nomeEntrevistado = txtNomeEntrevistado.getText().toString();
                 String cep = txtCep.getText().toString();
                 String bairro = txtBairro.getText().toString();
@@ -336,12 +337,18 @@ public class CadastroActivity extends AppCompatActivity {
                 String sexo = rgSexo.getCheckedRadioButtonId() == R.id.rbMasculino ? "M" : "F";
 
 
-                boolean isFormValido = validarPreenchimentoCampos(view, nomeEntrevistador, nomeEntrevistado,
+                boolean isFormValido = validarPreenchimentoCampos(nomeEntrevistado,
                         cep, numero, rua, cidade, telefone, email, estado, idade,
                         localPesquisa, ocupacao, escolaridade, areaGraduacao,
                         gostariaGraduacao, paticiparSorteio);
 
                 final ClienteDao dao = new ClienteDao(getBaseContext());
+                final UserDao userDao = new UserDao(getBaseContext());
+                SharedPreferences myPreferences =
+                        PreferenceManager.getDefaultSharedPreferences(CadastroActivity.this);
+                String value = myPreferences.getString("username", "");
+                user = userDao.getUsuarioComUsername(value);
+
                 boolean sucesso;
 
                 SimpleDateFormat formatoData = new SimpleDateFormat("dd/MM/yyyy HH:mm");
@@ -352,8 +359,8 @@ public class CadastroActivity extends AppCompatActivity {
                 if (clienteEditado == null){
                     cv.put("data_pesquisa", dataAtual);
                 }
-                cv.put("nome_entrevistador", nomeEntrevistador);
-                cv.put("unidade_entrevista", unidadeEntrevistador);
+                cv.put("nome_entrevistador", user.getNome());
+                cv.put("unidade_entrevista", user.getUnidade());
                 cv.put("nome_entrevistado", nomeEntrevistado);
                 cv.put("sexo", sexo);
                 cv.put("cidade", cidade);
@@ -391,8 +398,7 @@ public class CadastroActivity extends AppCompatActivity {
                             cv.getAsString("nome_entrevistado"));
 
                         if (clienteEditado != null) {
-                            salvarPesquisaEdicao(view, txtNomeEntrevistador,
-                                    txtUnidadeEntrevistador, txtNomeEntrevistado,
+                            salvarPesquisaEdicao(view, txtNomeEntrevistado,
                                     txtCep, txtRua, txtComplemento, txtNumero, txtBairro,
                                     txtCidade, spnEstado, txtTelefone, txtEmail, rgSexo,
                                     spnIdade, spnLocalPesquisa, spnOcupacao, spnEscolaridade,
@@ -411,8 +417,7 @@ public class CadastroActivity extends AppCompatActivity {
                                         .setAction("Action", null).show();
                             }else {
                                 sucesso = dao.salvar(cv);
-                                eviarPesquisaParaGeracaoProspect(view,
-                                        txtNomeEntrevistador, txtUnidadeEntrevistador, txtNomeEntrevistado,
+                                eviarPesquisaParaGeracaoProspect(view, txtNomeEntrevistado,
                                         txtCep, txtRua, txtComplemento, txtNumero, txtBairro, txtCidade,
                                         spnEstado, txtTelefone, txtEmail, rgSexo, spnIdade, spnLocalPesquisa,
                                         spnOcupacao, spnEscolaridade, spnArea, spnOpcaoPos, spnInicioPos,
@@ -429,19 +434,17 @@ public class CadastroActivity extends AppCompatActivity {
         });
     }
 
-    private void salvarPesquisaEdicao(View view, EditText txtNomeEntrevistador, EditText txtUnidadeEntrevistador, EditText txtNomeEntrevistado, EditText txtCep, EditText txtRua, EditText txtComplemento, EditText txtNumero, EditText txtBairro, EditText txtCidade, Spinner spnEstado, EditText txtTelefone, EditText txtEmail, RadioGroup rgSexo, Spinner spnIdade, Spinner spnLocalPesquisa, Spinner spnOcupacao, Spinner spnEscolaridade, Spinner spnArea, Spinner spnOpcaoPos, Spinner spnInicioPos, Spinner spnParticiparSorteio, Spinner spnGraduacao, ClienteDao dao, ContentValues cv, ProgressDialog pd) {
+    private void salvarPesquisaEdicao(View view, EditText txtNomeEntrevistado, EditText txtCep, EditText txtRua, EditText txtComplemento, EditText txtNumero, EditText txtBairro, EditText txtCidade, Spinner spnEstado, EditText txtTelefone, EditText txtEmail, RadioGroup rgSexo, Spinner spnIdade, Spinner spnLocalPesquisa, Spinner spnOcupacao, Spinner spnEscolaridade, Spinner spnArea, Spinner spnOpcaoPos, Spinner spnInicioPos, Spinner spnParticiparSorteio, Spinner spnGraduacao, ClienteDao dao, ContentValues cv, ProgressDialog pd) {
         boolean sucesso;
         sucesso = dao.salvar(clienteEditado.getId(), cv);
-        eviarPesquisaParaGeracaoProspect(view,
-                txtNomeEntrevistador, txtUnidadeEntrevistador, txtNomeEntrevistado,
+        eviarPesquisaParaGeracaoProspect(view, txtNomeEntrevistado,
                 txtCep, txtRua, txtComplemento, txtNumero, txtBairro, txtCidade,
                 spnEstado, txtTelefone, txtEmail, rgSexo, spnIdade, spnLocalPesquisa,
                 spnOcupacao, spnEscolaridade, spnArea, spnOpcaoPos, spnInicioPos,
                 spnParticiparSorteio, spnGraduacao, dao, sucesso, cv, pd);
     }
 
-    private void eviarPesquisaParaGeracaoProspect(final View view, final EditText txtNomeEntrevistador,
-                                                  final EditText txtUnidadeEntrevistador,
+    private void eviarPesquisaParaGeracaoProspect(final View view,
                                                   final EditText txtNomeEntrevistado,
                                                   final EditText txtCep, final EditText txtRua,
                                                   final EditText txtComplemento, final EditText txtNumero,
@@ -460,7 +463,8 @@ public class CadastroActivity extends AppCompatActivity {
 
             pd.show();
 
-            mAPIService.savePost(cliente).subscribeOn(Schedulers.io())
+            mAPIService.savePost("Token " +
+                    user.getToken() ,cliente).subscribeOn(Schedulers.io())
                     .takeUntil(Observable.timer(30, TimeUnit.SECONDS))
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Subscriber<Cliente>() {
@@ -499,8 +503,6 @@ public class CadastroActivity extends AppCompatActivity {
 
 
                             txtNomeEntrevistado.setText("");
-                            txtUnidadeEntrevistador.setText("");
-                            txtNomeEntrevistador.setText("");
                             txtCep.setText("");
                             txtRua.setText("");
                             txtComplemento.setText("");
@@ -537,7 +539,7 @@ public class CadastroActivity extends AppCompatActivity {
         }
     }
 
-    private boolean validarPreenchimentoCampos(View view, String nomeEntrevistador,
+    private boolean validarPreenchimentoCampos(
                                                String nomeEntrevistado, String cep, String numero,
                                                String rua, String cidade, String telefone,
                                                String email, String estado, String idade,
@@ -545,8 +547,7 @@ public class CadastroActivity extends AppCompatActivity {
                                                String escolaridade, String areaGraduacao,
                                                String pretencaoInicioPos, String paticiparSorteio) {
         awesomeValidation.validate();
-        if (StringUtils.isEmpty(nomeEntrevistador) ||
-                StringUtils.isEmpty(nomeEntrevistado) ||
+        if (    StringUtils.isEmpty(nomeEntrevistado) ||
                 StringUtils.isEmpty(cep) ||
                 StringUtils.isEmpty(rua) ||
                 StringUtils.isEmpty(numero) ||
@@ -572,8 +573,6 @@ public class CadastroActivity extends AppCompatActivity {
             Integer idCliente = (Integer) intent.getSerializableExtra("cliente");
             clienteEditado = new ClienteDao(this).getCliente(idCliente);
             TextView txtDataPesquisa = findViewById(R.id.txtDataPesquisa);
-            EditText txtNomeEntrevistador = findViewById(R.id.txtNomeEntrevistador);
-            EditText txtUnidadeEntrevistador = findViewById(R.id.txtUnidadeEntrevistador);
             EditText txtNomeEntrevistado = findViewById(R.id.txtNomeEntrevistado);
             TextInputEditText txtCep = (TextInputEditText) findViewById(R.id.txtZipCode);
             EditText txtRua = findViewById(R.id.et_street);
@@ -599,8 +598,6 @@ public class CadastroActivity extends AppCompatActivity {
 
             txtDataPesquisa.setText(clienteEditado.getDataPesquisa());
             txtNomeEntrevistado.setText(clienteEditado.getNomeEntrevistado());
-            txtUnidadeEntrevistador.setText(clienteEditado.getUnidadeEntrevista());
-            txtNomeEntrevistador.setText(clienteEditado.getNomeEntrevistador());
             txtCep.setText(clienteEditado.getCep());
             txtRua.setText(clienteEditado.getRua());
             txtComplemento.setText(clienteEditado.getComplemento());
