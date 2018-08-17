@@ -41,6 +41,7 @@ import com.domain.androidcrud.ValidadorCampos;
 import com.domain.androidcrud.ZipCodeListener;
 import com.domain.androidcrud.model.Cliente;
 import com.domain.androidcrud.model.Endereco;
+import com.domain.androidcrud.request.RetrofitClient;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -48,6 +49,9 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
+import retrofit2.Retrofit;
+import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
+import retrofit2.converter.gson.GsonConverterFactory;
 import rx.Observable;
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -108,8 +112,6 @@ public class CadastroActivity extends AppCompatActivity {
                 R.id.sp_state,
                 R.id.et_number,
                 R.id.tv_zip_code_search);
-
-        mAPIService = ApiUtils.getAPIService();
 
         //verifica se começou agora ou se veio de uma edição
         Intent intent = getIntent();
@@ -463,8 +465,15 @@ public class CadastroActivity extends AppCompatActivity {
 
             pd.show();
 
+            mAPIService = new Retrofit.Builder()
+                    .baseUrl("http://localhost:9441/popbe/")
+                    .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+                    .addConverterFactory(GsonConverterFactory.create())
+                    .build().create(APIService.class);
+
             mAPIService.savePost("Token " +
-                    user.getToken() ,cliente).subscribeOn(Schedulers.io())
+                    user.getToken() ,cliente)
+                    .subscribeOn(Schedulers.newThread())
                     .takeUntil(Observable.timer(30, TimeUnit.SECONDS))
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Subscriber<Cliente>() {

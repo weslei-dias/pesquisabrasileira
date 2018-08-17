@@ -69,7 +69,7 @@ public class LoginActivity extends AppCompatActivity {
                                 UserDao userDao = new UserDao(getApplicationContext());
                                 ContentValues cv = new ContentValues();
                                 cv.put("username", username);
-                                cv.put("token", user.getUnidade());
+                                cv.put("token", user.getToken());
                                 cv.put("nome", user.getNome());
                                 cv.put("unidade", user.getUnidade());
 

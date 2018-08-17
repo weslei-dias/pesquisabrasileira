@@ -4,7 +4,7 @@ public class ApiUtils {
 
     private ApiUtils() {}
 
-    public static final String BASE_URL = "http://18.216.169.97:9441/popbe/";
+    public static final String BASE_URL = "http://localhost:9441/popbe/";
     public static final String URL_VETROL = "https://vetrol.2x3.com.br/api/";
 
     public static APIService getAPIService() {
