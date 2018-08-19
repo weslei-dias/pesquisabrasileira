@@ -8,7 +8,7 @@ import lombok.Data;
 
 @Data
 @AllArgsConstructor
-public class Cliente {
+public class Pesquisa {
 
     @SerializedName("id")
     @Expose
@@ -105,14 +105,14 @@ public class Cliente {
     @Expose
     private String inicioSegundaGraduacao;
 
-    private Boolean gerouProspect;
+    private Boolean gerouLead;
 
-    private String numeroProspect;
+    private String idLead;
 
-    private Integer statusProspect;
+    private String statusLead;
 
 
-    public Cliente()
+    public Pesquisa()
     {
 
     }

@@ -1,37 +1,41 @@
 package com.domain.androidcrud.activity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.DividerItemDecoration;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import com.basgeekball.awesomevalidation.AwesomeValidation;
 import com.domain.androidcrud.request.APIService;
-import com.domain.androidcrud.ClienteAdapter;
-import com.domain.androidcrud.dao.ClienteDao;
+import com.domain.androidcrud.PesquisaAdapter;
+import com.domain.androidcrud.dao.PesquisaDao;
 import com.domain.androidcrud.R;
 import com.domain.androidcrud.Util;
 
 public class MainActivity extends AppCompatActivity {
 
-    private EditText etZipCode;
-    private Util util;
-    private ProgressBar progressBar;
-    private APIService mAPIService;
-    private AwesomeValidation awesomeValidation;
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        setContentView(R.layout.activity_main);
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
 
         configurarRecycler();
 
@@ -54,25 +58,46 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
 
-        return super.onOptionsItemSelected(item);
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        int id = item.getItemId();
+        switch (id){
+            case R.id.menuSair:
+                SharedPreferences myPreferences =
+                        PreferenceManager.getDefaultSharedPreferences(MainActivity.this);
+                SharedPreferences.Editor myEditor = myPreferences.edit();
+                myEditor.clear();
+                myEditor.commit();
+                acessarLoginActivity();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
 
     }
 
+    private void acessarLoginActivity() {
+        Intent intent = new Intent(MainActivity.this,
+                LoginActivity.class);
+        startActivity(intent);
+        finish();
+    }
+
     private RecyclerView recyclerView;
-    private ClienteAdapter clienteAdapter;
+    private PesquisaAdapter clienteAdapter;
     private void configurarRecycler() {
         recyclerView = findViewById(R.id.recyclerView);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
-        ClienteDao dao = new ClienteDao(this);
-        clienteAdapter = new ClienteAdapter(dao.getTodosClientes());
+        PesquisaDao dao = new PesquisaDao(this);
+        clienteAdapter = new PesquisaAdapter(dao.getTodasPesquisas());
         recyclerView.setAdapter(clienteAdapter);
         recyclerView.addItemDecoration(new DividerItemDecoration(this,
                 DividerItemDecoration.VERTICAL));

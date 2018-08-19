@@ -53,6 +53,64 @@
                     android:layout_weight="1"
                     android:textSize="16sp" />
             </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_fieldset_nome_lidero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp">
+
+                <TextView
+                    android:id="@+id/txtLidero"
+                    android:layout_width="@dimen/width_label"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:text="Entrevistador: "
+                    android:textSize="16sp" />
+
+
+                <TextView
+                    android:id="@+id/txtNomeLidero"
+                    android:layout_width="@dimen/width_label"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="16sp" />
+            </LinearLayout>
+            <LinearLayout
+                android:id="@+id/ll_fieldset_unidade_lidero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:padding="4dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginStart="16dp">
+
+                <TextView
+                    android:id="@+id/txtUnidade"
+                    android:layout_width="@dimen/width_label"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textStyle="bold"
+                    android:text="Unidade: "
+                    android:textSize="16sp" />
+
+
+                <TextView
+                    android:id="@+id/txtUnidadeLidero"
+                    android:layout_width="@dimen/width_label"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="16sp" />
+            </LinearLayout>
 
 
             <android.support.design.widget.TextInputLayout
@@ -873,5 +931,6 @@
 
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
+
 
 </android.support.constraint.ConstraintLayout>

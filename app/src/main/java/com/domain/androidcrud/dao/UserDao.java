@@ -5,7 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 
 import com.domain.androidcrud.db.DbGateway;
-import com.domain.androidcrud.model.Cliente;
 import com.domain.androidcrud.model.User;
 
 public class UserDao {

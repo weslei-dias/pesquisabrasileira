@@ -3,4 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     tools:context="com.domain.androidcrud.activity.MainActivity">
 
+    <item  android:id="@+id/menuSair"
+        android:title="Sair"/>
+
 </menu>

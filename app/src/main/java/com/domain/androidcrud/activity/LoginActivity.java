@@ -82,6 +82,8 @@ public class LoginActivity extends AppCompatActivity {
                                             PreferenceManager.getDefaultSharedPreferences(LoginActivity.this);
                                     SharedPreferences.Editor myEditor = myPreferences.edit();
                                     myEditor.putString("username", username);
+                                    myEditor.putString("nome", user.getNome());
+                                    myEditor.putString("unidade", user.getUnidade());
                                     myEditor.commit();
 
                                     Snackbar.make(getCurrentFocus(), "Seja bem vindo " + user.getNome()

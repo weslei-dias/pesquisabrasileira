@@ -1,7 +1,7 @@
 package com.domain.androidcrud.request;
 
 
-import com.domain.androidcrud.model.Cliente;
+import com.domain.androidcrud.model.Pesquisa;
 import com.domain.androidcrud.model.User;
 
 import retrofit2.http.Body;
@@ -14,8 +14,8 @@ import rx.Observable;
 public interface APIService {
 
     @POST("salvar")
-    Observable<Cliente> savePost(@Header("Authorization") String authorization,
-                                 @Body Cliente cliente);
+    Observable<Pesquisa> savePost(@Header("Authorization") String authorization,
+                                 @Body Pesquisa pesquisa);
 
     @POST("login/")
     @FormUrlEncoded
