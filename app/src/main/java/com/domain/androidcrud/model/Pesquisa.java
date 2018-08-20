@@ -109,6 +109,8 @@ public class Pesquisa {
 
     private String idLead;
 
+    @SerializedName("statusLead")
+    @Expose
     private String statusLead;
 
     @SerializedName("unidade")
