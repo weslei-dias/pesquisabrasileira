@@ -111,6 +111,10 @@ public class Pesquisa {
 
     private String statusLead;
 
+    @SerializedName("unidade")
+    @Expose
+    private Integer unidade;
+
 
     public Pesquisa()
     {

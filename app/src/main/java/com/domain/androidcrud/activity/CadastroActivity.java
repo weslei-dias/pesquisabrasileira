@@ -479,7 +479,6 @@ public class CadastroActivity extends AppCompatActivity {
         if (sucesso) {
             final Pesquisa pesquisa = dao.retornarUltimo();
 
-
             pd.show();
 
             mAPIService = new Retrofit.Builder()
@@ -515,6 +514,7 @@ public class CadastroActivity extends AppCompatActivity {
 
                             cv.clear();
                             cv.put("gerou_lead", pesquisa.getGerouLead() ? 1 : 0);
+                            cv.put("unidade", pesquisa.getUnidade());
                             if (pesquisa.getGerouLead()) {
                                 cv.put("id_lead", pesquisa.getIdLead());
                             }
