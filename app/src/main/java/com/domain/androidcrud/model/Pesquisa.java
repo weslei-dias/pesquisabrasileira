@@ -117,6 +117,10 @@ public class Pesquisa {
     @Expose
     private Integer unidade;
 
+    @SerializedName("id_web")
+    @Expose
+    private Integer idWeb;
+
 
     public Pesquisa()
     {

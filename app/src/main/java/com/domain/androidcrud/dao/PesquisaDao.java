@@ -98,12 +98,13 @@ public class PesquisaDao {
             String numeroLead = cursor.getString(cursor.getColumnIndex("id_lead"));
             String status = cursor.getString(cursor.getColumnIndex("status_lead"));
             Integer unidade = cursor.getColumnIndex("unidade");
+            Integer idWeb = cursor.getColumnIndex("id_web");
 
             pesquisas.add(new Pesquisa(id, dataPesquisa, nomeEntrevistador, unidadeEntrevista, nomeEntrevistado, sexo, cidade, cep,
                     bairro, numero, estado, rua, complemento, telefone, email, idade, localPesquisa,
                     ocupacao, escolaridade, areaGraduacao, opcaoPos, qualPos, pretencaoInicioPos, paticiparSorteio,
                     inicioPos, outroLocal, outraArea, tempoConclusaoGraduacao, desejaGraduacao,
-                    inicioPrimeiraGraduacao, inicioSegundaGraduacao, gerouLead, numeroLead, status, unidade));
+                    inicioPrimeiraGraduacao, inicioSegundaGraduacao, gerouLead, numeroLead, status, unidade, idWeb));
         }
         cursor.close();
         return pesquisas;
@@ -150,12 +151,14 @@ public class PesquisaDao {
             Boolean gerouLead = isLead != null && Integer.valueOf(isLead) == 1;
             String numeroLead = cursor.getString(cursor.getColumnIndex("id_lead"));
             String status = cursor.getString(cursor.getColumnIndex("status_lead"));
+            Integer idWeb = cursor.getColumnIndex("id_web");
+
             cursor.close();
             return new Pesquisa(id, dataPesquisa, nomeEntrevistador, unidadeEntrevista, nomeEntrevistado, sexo, cidade, cep,
                     bairro, numero, estado, rua, complemento, telefone, email, idade, localPesquisa,
                     ocupacao, escolaridade, areaGraduacao, opcaoPos, qualPos, pretencaoInicioPos, paticiparSorteio,
                     inicioPos, outroLocal, outraArea, tempoConclusaoGraduacao, desejaGraduacao,
-                    inicioPrimeiraGraduacao, inicioSegundaGraduacao, gerouLead, numeroLead, status, unidade);
+                    inicioPrimeiraGraduacao, inicioSegundaGraduacao, gerouLead, numeroLead, status, unidade, idWeb);
         }
 
         return null;
@@ -202,13 +205,15 @@ public class PesquisaDao {
             String numeroLead = cursor.getString(cursor.getColumnIndex("id_lead"));
             String status = cursor.getString(cursor.getColumnIndex("status_lead"));
             Integer unidade = cursor.getColumnIndex("unidade");
+            Integer idWeb = cursor.getColumnIndex("id_web");
+
 
             cursor.close();
             pesquisa = new Pesquisa(id, dataPesquisa, nomeEntrevistador, unidadeEntrevista, nomeEntrevistado, sexo, cidade, cep,
                     bairro, numero, estado, rua, complemento, telefone, email, idade, localPesquisa,
                     ocupacao, escolaridade, areaGraduacao, opcaoPos, qualPos, pretencaoInicioPos, paticiparSorteio,
                     inicioPos, outroLocal, outraArea, tempoConclusaoGraduacao, desejaGraduacao,
-                    inicioPrimeiraGraduacao, inicioSegundaGraduacao, gerouLead, numeroLead, status, unidade);
+                    inicioPrimeiraGraduacao, inicioSegundaGraduacao, gerouLead, numeroLead, status, unidade, idWeb);
         }
         cursor.close();
         return pesquisa;
