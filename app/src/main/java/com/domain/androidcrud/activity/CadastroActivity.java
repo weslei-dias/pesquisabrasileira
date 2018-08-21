@@ -63,6 +63,7 @@ public class CadastroActivity extends AppCompatActivity {
     private AwesomeValidation awesomeValidation;
     private PesquisaAdapter pesquisaAdapter;
     private  User user;
+    private Pesquisa pesquisa;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -389,12 +390,28 @@ public class CadastroActivity extends AppCompatActivity {
                 cv.put("inicio_primeira_graduacao", inicioPrimeiraGraduacao);
                 cv.put("inicio_segunda_graduacao", inicioSegundaGraduacao);
 
+                String dataPesquisa = pesquisaEditada != null ? pesquisaEditada.getDataPesquisa() :dataAtual;
+
+                pesquisa =  new Pesquisa(null, dataPesquisa , user.getNome(), user.getUnidade(),
+                        nomeEntrevistado, sexo, cidade, cep,
+                        bairro, numero, estado, rua, complemento, telefone, email, idade, localPesquisa,
+                        ocupacao, escolaridade, areaGraduacao, opcaoPos, qualPos, pretencaoInicioPos, paticiparSorteio,
+                        inicioPos, outroLocal, outraArea, tempoFinalizarGraduacao, gostariaGraduacao,
+                        inicioPrimeiraGraduacao, inicioSegundaGraduacao, null,
+                        null, null, null, null);
+
+
                 if (isFormValido) {
 
                     Pesquisa pesquisaIgual = dao.getPesquisaComMesmoEmail(cv.getAsString("email"),
                             cv.getAsString("nome_entrevistado"));
 
                         if (pesquisaEditada != null) {
+                            Integer idWeb = dao.getIdWebPesquisa(pesquisaEditada.getId());
+                            pesquisa.setIdLead(pesquisaEditada.getIdLead());
+                            pesquisa.setUnidade(pesquisaEditada.getUnidade());
+                            pesquisa.setStatusLead(pesquisaEditada.getStatusLead());
+                            pesquisa.setIdWeb(idWeb);
                             salvarPesquisaEdicao(view, txtNomeEntrevistado,
                                     txtCep, txtRua, txtComplemento, txtNumero, txtBairro,
                                     txtCidade, spnEstado, txtTelefone, txtEmail, rgSexo,
@@ -408,17 +425,17 @@ public class CadastroActivity extends AppCompatActivity {
                                 if (pesquisaIgual.getIdLead() != null){
                                     msgPesquisaIgual.append("Lead de id: " + pesquisaIgual.getIdLead());
                                 }
-                                msgPesquisaIgual.append("Verifique o nome e o email do entrevistador e tente novamente");
+                                msgPesquisaIgual.append("\nVerifique o nome e o email do entrevistador e tente novamente");
                                 Snackbar.make(view, msgPesquisaIgual.toString() , Snackbar.LENGTH_LONG)
                                         .setDuration(5000)
                                         .setAction("Action", null).show();
                             }else {
-                                sucesso = dao.salvar(cv);
+//                                sucesso = dao.salvar(cv);
                                 eviarPesquisaParaGeracaoProspect(view, txtNomeEntrevistado,
                                         txtCep, txtRua, txtComplemento, txtNumero, txtBairro, txtCidade,
                                         spnEstado, txtTelefone, txtEmail, rgSexo, spnIdade, spnLocalPesquisa,
                                         spnOcupacao, spnEscolaridade, spnArea, spnOpcaoPos, spnInicioPos,
-                                        spnParticiparSorteio, spnGraduacao, dao, sucesso, cv, pd);
+                                        spnParticiparSorteio, spnGraduacao, dao, false, cv, pd);
                             }
                         }
 
@@ -454,8 +471,8 @@ public class CadastroActivity extends AppCompatActivity {
                                       Spinner spnInicioPos, Spinner spnParticiparSorteio,
                                       Spinner spnGraduacao, PesquisaDao dao, ContentValues cv,
                                       ProgressDialog pd) {
-        boolean sucesso;
-        sucesso = dao.salvar(pesquisaEditada.getId(), cv);
+        boolean sucesso = false;
+//        sucesso = dao.salvar(pesquisaEditada.getId(), cv);
         eviarPesquisaParaGeracaoProspect(view, txtNomeEntrevistado,
                 txtCep, txtRua, txtComplemento, txtNumero, txtBairro, txtCidade,
                 spnEstado, txtTelefone, txtEmail, rgSexo, spnIdade, spnLocalPesquisa,
@@ -476,8 +493,8 @@ public class CadastroActivity extends AppCompatActivity {
                                                   final Spinner spnInicioPos, final Spinner spnParticiparSorteio,
                                                   final Spinner spnGraduacao, final PesquisaDao dao, boolean sucesso,
                                                   final ContentValues cv, final ProgressDialog pd) {
-        if (sucesso) {
-            final Pesquisa pesquisa = dao.retornarUltimo();
+        if (true) {
+//            final Pesquisa pesquisa = dao.retornarUltimo();
 
             pd.show();
 
@@ -488,9 +505,9 @@ public class CadastroActivity extends AppCompatActivity {
                     .build().create(APIService.class);
 
             mAPIService.savePost("Token " +
-                    user.getToken() ,pesquisa)
-                    .subscribeOn(Schedulers.newThread())
-                    .takeUntil(Observable.timer(120, TimeUnit.SECONDS))
+                    user.getToken() , pesquisa)
+                    .subscribeOn(Schedulers.io())
+                    .takeUntil(Observable.timer(200, TimeUnit.SECONDS))
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe(new Subscriber<Pesquisa>() {
                         @Override
@@ -507,20 +524,21 @@ public class CadastroActivity extends AppCompatActivity {
                         }
 
                         @Override
-                        public void onNext(Pesquisa pesquisa) {
-                            if (pesquisa.getOpcaoPos().equals("Sim gostaria")) {
+                        public void onNext(Pesquisa pesquisaRetornada) {
+                            if (pesquisaRetornada.getOpcaoPos().equals("Sim gostaria")) {
                                 pd.setTitle("Gerando Lead ...");
                             }
 
-                            cv.clear();
-                            cv.put("gerou_lead", pesquisa.getGerouLead() ? 1 : 0);
-                            cv.put("unidade", pesquisa.getUnidade());
-                            cv.put("id_web", pesquisa.getIdWeb());
-                            if (pesquisa.getGerouLead()) {
-                                cv.put("id_lead", pesquisa.getIdLead());
-                                cv.put("status_lead", pesquisa.getStatusLead());
+//                            cv.clear();
+                            cv.put("gerou_lead", pesquisaRetornada.getGerouLead() ? 1 : 0);
+                            cv.put("status_lead", pesquisaRetornada.getStatusLead());
+                            if (pesquisaRetornada.getGerouLead()) {
+                                cv.put("id_lead", pesquisaRetornada.getIdLead());
+                                cv.put("unidade", pesquisaRetornada.getUnidade());
+                                cv.put("id_web", pesquisaRetornada.getIdWeb());
                             }
-                            dao.salvar(pesquisa.getId(), cv);
+                           boolean salvou =  dao.salvar(pesquisaEditada != null ?
+                                   pesquisaEditada.getId() : 0, cv);
 
                             if (pesquisaEditada != null) {
                                 pesquisaAdapter.atualizarCliente(pesquisa);

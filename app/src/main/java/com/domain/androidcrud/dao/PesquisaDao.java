@@ -56,6 +56,18 @@ public class PesquisaDao {
         return cliente;
     }
 
+    public Integer getIdWebPesquisa(Integer id)
+    {
+        Cursor cursor = gw.getDb().rawQuery("SELECT * FROM pesquisa where id=" + id, null);
+        Integer idRetornado = null;
+        while (cursor.moveToNext()) {
+            idRetornado = cursor.getInt(cursor.getColumnIndex("id_web"));
+        }
+        cursor.close();
+
+        return idRetornado;
+    }
+
     public List<Pesquisa> getTodasPesquisas() {
         List<Pesquisa> pesquisas = new ArrayList<>();
         Cursor cursor = gw.getDb()
