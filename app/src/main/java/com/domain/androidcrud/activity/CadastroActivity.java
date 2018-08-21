@@ -530,9 +530,10 @@ public class CadastroActivity extends AppCompatActivity {
                             }
 
 //                            cv.clear();
-                            cv.put("gerou_lead", pesquisaRetornada.getGerouLead() ? 1 : 0);
+                            cv.put("gerou_lead", pesquisaRetornada.getGerouLead() != null ? 1 : 0);
                             cv.put("status_lead", pesquisaRetornada.getStatusLead());
-                            if (pesquisaRetornada.getGerouLead()) {
+                            if (pesquisaRetornada.getGerouLead() != null &&
+                                    pesquisaRetornada.getGerouLead()) {
                                 cv.put("id_lead", pesquisaRetornada.getIdLead());
                                 cv.put("unidade", pesquisaRetornada.getUnidade());
                                 cv.put("id_web", pesquisaRetornada.getIdWeb());
