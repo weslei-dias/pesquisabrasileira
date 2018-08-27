@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "popbe";
-    private static final int DATABASE_VERSION = 8;
+    private static final int DATABASE_VERSION = 9;
     private final String CREATE_TABLE_PESQUISA = "CREATE TABLE " +
             "pesquisa (id INTEGER PRIMARY KEY AUTOINCREMENT, " +
             "data_pesquisa TEXT NOT NULL," +
@@ -43,7 +43,7 @@ public class DBHelper extends SQLiteOpenHelper {
             "gerou_lead INTEGER," +
             "id_lead TEXT," +
             "status_lead TEXT," +
-            "unidade INTEGER," +
+            "unidade TEXT," +
             "id_web INTEGER" +
             ");";
 

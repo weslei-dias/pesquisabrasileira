@@ -109,7 +109,7 @@ public class PesquisaDao {
             Boolean gerouLead = isLead != null && Integer.valueOf(isLead) == 1;
             String numeroLead = cursor.getString(cursor.getColumnIndex("id_lead"));
             String status = cursor.getString(cursor.getColumnIndex("status_lead"));
-            Integer unidade = cursor.getColumnIndex("unidade");
+            String unidade = cursor.getString(cursor.getColumnIndex("unidade"));
             Integer idWeb = cursor.getColumnIndex("id_web");
 
             pesquisas.add(new Pesquisa(id, dataPesquisa, nomeEntrevistador, unidadeEntrevista, nomeEntrevistado, sexo, cidade, cep,
@@ -156,7 +156,7 @@ public class PesquisaDao {
             String desejaGraduacao = cursor.getString(cursor.getColumnIndex("deseja_graduacao"));
             String inicioPrimeiraGraduacao = cursor.getString(cursor.getColumnIndex("inicio_primeira_graduacao"));
             String inicioSegundaGraduacao = cursor.getString(cursor.getColumnIndex("inicio_segunda_graduacao"));
-            Integer unidade = cursor.getColumnIndex("unidade");
+            String unidade = cursor.getString(cursor.getColumnIndex("unidade"));
 
 
             String isLead = cursor.getString(cursor.getColumnIndex("gerou_lead"));
@@ -216,7 +216,7 @@ public class PesquisaDao {
             Boolean gerouLead = isLead != null && Integer.valueOf(isLead) == 1;
             String numeroLead = cursor.getString(cursor.getColumnIndex("id_lead"));
             String status = cursor.getString(cursor.getColumnIndex("status_lead"));
-            Integer unidade = cursor.getColumnIndex("unidade");
+            String unidade = cursor.getString(cursor.getColumnIndex("unidade"));
             Integer idWeb = cursor.getColumnIndex("id_web");
 
 

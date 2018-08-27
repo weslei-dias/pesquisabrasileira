@@ -499,7 +499,7 @@ public class CadastroActivity extends AppCompatActivity {
             pd.show();
 
             mAPIService = new Retrofit.Builder()
-                    .baseUrl("http://18.216.169.97:9441/popbe/")
+                    .baseUrl("http://18.222.100.246:9441/popbe/")
                     .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
                     .addConverterFactory(GsonConverterFactory.create())
                     .build().create(APIService.class);
